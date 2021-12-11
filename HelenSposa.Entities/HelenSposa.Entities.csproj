@@ -8,4 +8,8 @@
     <Folder Include="Concrete\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HelenSposa.Core\HelenSposa.Core.csproj" />
+  </ItemGroup>
+
 </Project>
