@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace HelenSposa.Core.DataAccess.EntityFramework
 {
     //tum entity lerde yapilan sabit islemler oldugu icin temel sinifta toplayip generic calisabilmek amaciyla bu sinif olusturluyor
-    class EfEntityRepositoyBase<TEntity, TContext> : IEntityRepository<TEntity>
+    public class EfEntityRepositoyBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {

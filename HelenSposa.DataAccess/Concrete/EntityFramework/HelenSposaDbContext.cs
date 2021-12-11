@@ -19,16 +19,16 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
         {
         }
 
-        public virtual DbSet<Basket> Baskets { get; set; }
-        public virtual DbSet<BasketDetail> BasketDetails { get; set; }
-        public virtual DbSet<BasketsEvent> BasketsEvents { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Event> Events { get; set; }
-        public virtual DbSet<EventType> EventTypes { get; set; }
-        public virtual DbSet<Expense> Expenses { get; set; }
-        public virtual DbSet<ExpensesType> ExpensesTypes { get; set; }
-        public virtual DbSet<Income> Incomes { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketDetail> BasketDetails { get; set; }
+        public DbSet<BasketsEvent> BasketsEvents { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<ExpensesType> ExpensesTypes { get; set; }
+        public DbSet<Income> Incomes { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

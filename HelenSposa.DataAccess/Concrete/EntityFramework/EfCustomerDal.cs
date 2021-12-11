@@ -1,5 +1,6 @@
 ﻿using HelenSposa.DataAccess.Abstract;
 using HelenSposa.Entities.Concrete;
+using HelenSposa.Core.DataAccess.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.DataAccess.Concrete.EntityFramework
 {
-    class EfCustomerDal : ICustomerDal
+    class EfCustomerDal : EfEntityRepositoyBase<Customer, HelenSposaDbContext>, ICustomerDal
     {
         public void Add(Customer entity)
         {
