@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.DataAccess.Abstract
 {
-    public interface ICustomerDal:IEntityRepository<Customer>
+    public interface IExpenseDal:IEntityRepository<Expense>
     {
     }
 }
