@@ -1,4 +1,7 @@
 ﻿using HelenSposa.Business.Abstract;
+using HelenSposa.Business.ValidationRules.FluentValidation;
+using HelenSposa.Core.CrossCuttingConcerns.Validation.FluentValidation;
+using HelenSposa.Core.Aspects.Postsharp;
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.Entities.Concrete;
 using System;
@@ -18,6 +21,7 @@ namespace HelenSposa.Business.Concrete.Managers
             _customerDal = customerDal;
         }
 
+        [FluentValidationAspect(typeof(CustomerValidator))]
         public void Add(Customer addedT)
         {
             _customerDal.Add(addedT);
@@ -43,6 +47,7 @@ namespace HelenSposa.Business.Concrete.Managers
             return _customerDal.Get(c => c.Id == id);
         }
 
+        [FluentValidationAspect(typeof(CustomerValidator))]
         public void Update(Customer updatedT)
         {
             _customerDal.Update(updatedT);

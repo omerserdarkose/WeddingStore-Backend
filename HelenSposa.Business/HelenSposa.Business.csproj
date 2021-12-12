@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.3.5" />
+    <PackageReference Include="PostSharp" Version="4.2.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HelenSposa.DataAccess\HelenSposa.DataAccess.csproj" />
+    <ProjectReference Include="..\HelenSposa.Entities\HelenSposa.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
