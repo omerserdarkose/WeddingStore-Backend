@@ -1,12 +1,20 @@
+using HelenSposa.Business.Abstract;
+using HelenSposa.Business.Concrete.Managers;
+using HelenSposa.Business.DependencyResolvers.Ninject;
+using HelenSposa.DataAccess.Abstract;
+using HelenSposa.DataAccess.Concrete.EntityFramework;
+using HelenSposa.Entities.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +34,10 @@ namespace HelenSposa.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddSingleton<ICustomerService, CustomerManager>();
+            services.AddTransient<ICustomerDal, EfCustomerDal>();
+            services.AddTransient<DbContext, HelenSposaDbContext>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HelenSposa.WebApi", Version = "v1" });

@@ -15,7 +15,7 @@ namespace HelenSposa.Business.DependencyResolvers.Ninject
     public class BusinessModule:NinjectModule
     {
         public override void Load()
-        {
+        { 
             Bind<ICustomerService>().To<CustomerManager>().InSingletonScope();
 
             Bind<ICustomerDal>().To<EfCustomerDal>();

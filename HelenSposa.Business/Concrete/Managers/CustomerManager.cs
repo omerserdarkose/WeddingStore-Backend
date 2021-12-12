@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Business.Concrete.Managers
 {
-    class CustomerManager : ICustomerService
+    public class CustomerManager : ICustomerService
     {
         private ICustomerDal _customerDal;
 
@@ -46,6 +46,12 @@ namespace HelenSposa.Business.Concrete.Managers
         {
             return _customerDal.Get(c => c.Id == id);
         }
+
+        public Customer FindPhone(string phoneNu)
+        {
+            return _customerDal.Get(c => c.PhoneNumber == phoneNu);
+        }
+        
 
         [FluentValidationAspect(typeof(CustomerValidator))]
         public void Update(Customer updatedT)

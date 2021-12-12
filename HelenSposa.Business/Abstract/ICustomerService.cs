@@ -12,6 +12,8 @@ namespace HelenSposa.Business.Abstract
     {
         Customer GetById(int id);
 
+        Customer FindPhone(string phoneNu);
+
         List<Customer> GetAllByPhoneCode(string phoneCode);
     }
 }
