@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Business.Concrete.Managers
 {
-    class CustomerService : ICustomerService
+    class CustomerManager : ICustomerService
     {
         private ICustomerDal _customerDal;
 
-        public CustomerService(ICustomerDal customerDal)
+        public CustomerManager(ICustomerDal customerDal)
         {
             _customerDal = customerDal;
         }
