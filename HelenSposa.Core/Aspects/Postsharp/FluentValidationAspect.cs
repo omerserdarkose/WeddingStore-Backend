@@ -4,18 +4,19 @@ using PostSharp.Aspects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-
+//gorunurde bir hata yok fakat run time da buraya gelmiyor kod, incele!!
 namespace HelenSposa.Core.Aspects.Postsharp
 {
     [Serializable]
-    public class FluentValidationAspect:OnMethodBoundaryAspect
+    public class FluentValidationAttribute:OnMethodBoundaryAspect
     {
         //reflection ile validator tipi ogreniliyor
         Type _validatorType;
-        public FluentValidationAspect(Type validatorType)
+        public FluentValidationAttribute(Type validatorType)
         {
             _validatorType = validatorType;
         }
@@ -35,5 +36,6 @@ namespace HelenSposa.Core.Aspects.Postsharp
                 ValidatorTool.FluentValidate(validator, entity);
             }
         }
+
     }
 }

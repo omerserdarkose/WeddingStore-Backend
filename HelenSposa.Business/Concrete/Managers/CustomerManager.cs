@@ -21,7 +21,9 @@ namespace HelenSposa.Business.Concrete.Managers
             _customerDal = customerDal;
         }
 
-        [FluentValidationAspect(typeof(CustomerValidator))]
+
+        //attribute calismiyor suan postsharp activation ile ilgili bir problem var tekrar bakilmali
+        [FluentValidation(typeof(CustomerValidator))]
         public void Add(Customer addedT)
         {
             _customerDal.Add(addedT);
@@ -53,7 +55,7 @@ namespace HelenSposa.Business.Concrete.Managers
         }
         
 
-        [FluentValidationAspect(typeof(CustomerValidator))]
+        [FluentValidation(typeof(CustomerValidator))]
         public void Update(Customer updatedT)
         {
             _customerDal.Update(updatedT);

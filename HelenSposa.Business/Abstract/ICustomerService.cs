@@ -1,5 +1,4 @@
-﻿using HelenSposa.Core.Business;
-using HelenSposa.Entities.Concrete;
+﻿using HelenSposa.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +7,20 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Business.Abstract
 {
-    public interface ICustomerService:IServiceRepository<Customer>
+    public interface ICustomerService
     {
+        List<Customer> GetAll();
+
+        List<Customer> GetAllByPhoneCode(string phoneCode);
+
         Customer GetById(int id);
 
         Customer FindPhone(string phoneNu);
 
-        List<Customer> GetAllByPhoneCode(string phoneCode);
+        void Add(Customer addedCustomer);
+
+        void Update(Customer updatedCustomer);
+
+        void Delete(Customer deletedCustomer);
     }
 }
