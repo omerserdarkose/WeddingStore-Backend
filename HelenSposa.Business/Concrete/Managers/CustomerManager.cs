@@ -21,7 +21,6 @@ namespace HelenSposa.Business.Concrete.Managers
             _customerDal = customerDal;
         }
 
-
         //attribute calismiyor suan postsharp activation ile ilgili bir problem var tekrar bakilmali
         [FluentValidation(typeof(CustomerValidator))]
         public void Add(Customer addedT)
@@ -39,6 +38,11 @@ namespace HelenSposa.Business.Concrete.Managers
              return _customerDal.GetList();
         }
 
+        /// <summary>
+        /// ulke telefon kodlarina gore musterileri getirir
+        /// </summary>
+        /// <param name="phoneCode">ulke telefon kodu</param>
+        /// <returns>musteri listesi doner </returns>
         public List<Customer> GetAllByPhoneCode(string phoneCode)
         {
             return _customerDal.GetList(c=>c.PhoneCode==phoneCode);

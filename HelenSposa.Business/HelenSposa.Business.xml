@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HelenSposa.Business</name>
+    </assembly>
+    <members>
+        <member name="M:HelenSposa.Business.Concrete.Managers.CustomerManager.GetAllByPhoneCode(System.String)">
+            <summary>
+            ulke telefon kodlarina gore musterileri getirir
+            </summary>
+            <param name="phoneCode">ulke telefon kodu</param>
+            <returns>musteri listesi doner </returns>
+        </member>
+    </members>
+</doc>

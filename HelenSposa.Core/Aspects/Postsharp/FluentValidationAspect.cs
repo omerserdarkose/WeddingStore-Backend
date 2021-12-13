@@ -16,6 +16,7 @@ namespace HelenSposa.Core.Aspects.Postsharp
     {
         //reflection ile validator tipi ogreniliyor
         Type _validatorType;
+
         public FluentValidationAttribute(Type validatorType)
         {
             _validatorType = validatorType;
