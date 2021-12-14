@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public class EventType : IEntity
+    public partial class EventType : IEntity
     {
         public EventType()
         {

@@ -1,5 +1,4 @@
 ﻿using HelenSposa.Core.Entities;
-using HelenSposa.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public class Basket:IEntity
+    public partial class Basket : IEntity
     {
         public Basket()
         {

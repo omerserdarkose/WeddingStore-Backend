@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public class ExpensesType : IEntity
+    public partial class ExpensesType : IEntity
     {
         public ExpensesType()
         {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public class BasketDetail: IEntity
+    public partial class BasketDetail : IEntity
     {
         public int Id { get; set; }
         public int BasketId { get; set; }

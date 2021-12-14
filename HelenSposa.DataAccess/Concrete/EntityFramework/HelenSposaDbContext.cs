@@ -1,41 +1,40 @@
 ﻿using System;
+using HelenSposa.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using HelenSposa.DataAccess;
-using HelenSposa.Entities.Concrete;
 
 #nullable disable
 
 namespace HelenSposa.DataAccess.Concrete.EntityFramework
 {
-    public partial class HelenSposaDbContext : DbContext
+    public partial class HelenSposaDBContext : DbContext
     {
-        public HelenSposaDbContext()
+        public HelenSposaDBContext()
         {
         }
 
-        public HelenSposaDbContext(DbContextOptions<HelenSposaDbContext> options)
+        public HelenSposaDBContext(DbContextOptions<HelenSposaDBContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Basket> Baskets { get; set; }
-        public DbSet<BasketDetail> BasketDetails { get; set; }
-        public DbSet<BasketsEvent> BasketsEvents { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Event> Events { get; set; }
-        public DbSet<EventType> EventTypes { get; set; }
-        public DbSet<Expense> Expenses { get; set; }
-        public DbSet<ExpensesType> ExpensesTypes { get; set; }
-        public DbSet<Income> Incomes { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Basket> Baskets { get; set; }
+        public virtual DbSet<BasketDetail> BasketDetails { get; set; }
+        public virtual DbSet<BasketsEvent> BasketsEvents { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<EventType> EventTypes { get; set; }
+        public virtual DbSet<Expense> Expenses { get; set; }
+        public virtual DbSet<ExpensesType> ExpensesTypes { get; set; }
+        public virtual DbSet<Income> Incomes { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer(@"Server=DRMORAREES\SQLEXPRESS;Database=HelenSposaDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DRMORAREES\\SQLEXPRESS;Database=HelenSposaDB;Trusted_Connection=True;");
             }
         }
 

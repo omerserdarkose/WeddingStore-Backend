@@ -1,5 +1,4 @@
 ﻿using HelenSposa.Core.Entities;
-using HelenSposa.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public class Event : IEntity
+    public partial class Event : IEntity
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public class Product : IEntity
+    public partial class Product : IEntity
     {
         public Product()
         {

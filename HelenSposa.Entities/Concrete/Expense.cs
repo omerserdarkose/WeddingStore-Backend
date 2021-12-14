@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public class Expense : IEntity
+    public partial class Expense : IEntity
     {
         public int Id { get; set; }
         public int TypeId { get; set; }
