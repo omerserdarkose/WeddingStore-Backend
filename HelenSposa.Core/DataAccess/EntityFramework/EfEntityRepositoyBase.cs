@@ -14,6 +14,7 @@ namespace HelenSposa.Core.DataAccess.EntityFramework
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
+
         public void Add(TEntity entity)
         {
             using (var context=new TContext())

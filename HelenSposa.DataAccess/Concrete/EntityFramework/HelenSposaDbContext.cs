@@ -7,13 +7,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HelenSposa.DataAccess.Concrete.EntityFramework
 {
-    public partial class HelenSposaDBContext : DbContext
+    //Scaffold-DbContext "Server=DRMORAREES\SQLEXPRESS;Database=HelenSposaDB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Concrete/ -force
+    public partial class HelenSposaDbContext : DbContext
     {
-        public HelenSposaDBContext()
+        public HelenSposaDbContext()
         {
         }
 
-        public HelenSposaDBContext(DbContextOptions<HelenSposaDBContext> options)
+        public HelenSposaDbContext(DbContextOptions<HelenSposaDbContext> options)
             : base(options)
         {
         }
@@ -128,6 +129,12 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
                     .IsRequired()
                     .HasMaxLength(15)
                     .IsUnicode(false);
+
+                entity.Property(e => e.IsActive)
+                    .IsRequired();
+
+                entity.Property(e => e.IsDeleted)
+                    .IsRequired();
             });
 
             modelBuilder.Entity<Event>(entity =>

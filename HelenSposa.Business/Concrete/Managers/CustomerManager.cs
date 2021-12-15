@@ -9,23 +9,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.Entities.Dtos;
+using AutoMapper;
 
 namespace HelenSposa.Business.Concrete.Managers
 {
     public class CustomerManager : ICustomerService
     {
         private ICustomerDal _customerDal;
+        private IMapper _mapper;
 
-        public CustomerManager(ICustomerDal customerDal)
+
+        public CustomerManager(ICustomerDal customerDal, IMapper mapper)
         {
             _customerDal = customerDal;
+            _mapper = mapper;
         }
 
         //attribute calismiyor suan postsharp activation ile ilgili bir problem var tekrar bakilmali
         [FluentValidation(typeof(CustomerValidator))]
-        public void Add(Customer addedT)
+        public void Add(CustomerAddDto addedT)
         {
-            _customerDal.Add(addedT);
+            _customerDal.Add(_mapper.Map<Customer>(addedT));
         }
 
         public void Delete(Customer deletedT)
@@ -58,11 +63,11 @@ namespace HelenSposa.Business.Concrete.Managers
             return _customerDal.Get(c => c.PhoneNumber == phoneNu);
         }
         
-
+        
         [FluentValidation(typeof(CustomerValidator))]
-        public void Update(Customer updatedT)
+        public void Update(CustomerUpdateDto updatedT)
         {
-            _customerDal.Update(updatedT);
+            _customerDal.Update(_mapper.Map<Customer>(updatedT));
         }
     }
 }

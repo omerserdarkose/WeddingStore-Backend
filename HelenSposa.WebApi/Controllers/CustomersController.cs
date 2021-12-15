@@ -1,5 +1,6 @@
 ﻿using HelenSposa.Business.Abstract;
 using HelenSposa.Entities.Concrete;
+using HelenSposa.Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Ninject.Modules;
 using System;
@@ -38,9 +39,16 @@ namespace HelenSposa.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{pCode}")]
+        public IActionResult Get(string pCode)
+        {
+            var result = _customerManager.GetAllByPhoneCode(pCode);
+            return Ok(result);
+        }
+
         // POST <CustomersController>
         [HttpPost]
-        public IActionResult Post([FromBody] Customer newCustomer)
+        public IActionResult Post([FromBody] CustomerAddDto newCustomer)
         {
             var customer = _customerManager.FindPhone(newCustomer.PhoneNumber);
 
@@ -54,7 +62,7 @@ namespace HelenSposa.WebApi.Controllers
 
         // PUT <CustomersController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Customer updCustomer)
+        public IActionResult Put(int id, [FromBody] CustomerUpdateDto updCustomer)
         {
             var customer = _customerManager.GetById(id);
 

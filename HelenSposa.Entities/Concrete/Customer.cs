@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public partial class Customer : IEntity
+    public partial class Customer : IEntity, IInfo
     {
         public Customer()
         {
@@ -19,8 +19,8 @@ namespace HelenSposa.Entities.Concrete
         public string LastName { get; set; }
         public string PhoneCode { get; set; }
         public string PhoneNumber { get; set; }
-        public bool? IsActive { get; set; }
-        public bool? IsDeleted { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
 
         public virtual ICollection<Basket> Baskets { get; set; }
         public virtual ICollection<Event> Events { get; set; }

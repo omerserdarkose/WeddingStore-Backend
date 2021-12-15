@@ -1,4 +1,5 @@
 ﻿using HelenSposa.Entities.Concrete;
+using HelenSposa.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace HelenSposa.Business.Abstract
 
         Customer FindPhone(string phoneNu);
 
-        void Add(Customer addedCustomer);
+        void Add(CustomerAddDto addedCustomer);
 
-        void Update(Customer updatedCustomer);
+        void Update(CustomerUpdateDto updatedCustomer);
 
         void Delete(Customer deletedCustomer);
     }

@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Entities.Dtos
 {
-    public class CustomerAddDto:IDto
+    public class CustomerAddDto:IDto,IInfo
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneCode { get; set; }
         public string PhoneNumber { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

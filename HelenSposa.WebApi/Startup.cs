@@ -19,6 +19,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using HelenSposa.Business.Mapping.AutoMapper;
 
 namespace HelenSposa.WebApi
 {
@@ -35,9 +37,10 @@ namespace HelenSposa.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(CustomerProfile));
             services.AddSingleton<ICustomerService, CustomerManager>();
             services.AddTransient<ICustomerDal, EfCustomerDal>();
-            services.AddTransient<DbContext, HelenSposaDbContext>();
+            services.AddScoped<DbContext, HelenSposaDbContext>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HelenSposa.WebApi", Version = "v1" });
