@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HelenSposa.Entities.Dtos;
 using AutoMapper;
+using HelenSposa.Core.Utilities.Result;
 
 namespace HelenSposa.Business.Concrete.Managers
 {
@@ -28,46 +29,48 @@ namespace HelenSposa.Business.Concrete.Managers
 
         //attribute calismiyor suan postsharp activation ile ilgili bir problem var tekrar bakilmali
         [FluentValidation(typeof(CustomerValidator))]
-        public void Add(CustomerAddDto addedT)
+        public IResult Add(CustomerAddDto addedCustomer)
         {
-            _customerDal.Add(_mapper.Map<Customer>(addedT));
+            var mapCustomer=_mapper.Map<Customer>(addedCustomer);
+            _customerDal.Add(mapCustomer);
+            return new SuccessResult();
         }
 
-        public void Delete(Customer deletedT)
+        public IResult Delete(CustomerDeleteDto deletedCustomer)
         {
-            _customerDal.Delete(deletedT);
+            var mapCustomer = _mapper.Map<Customer>(deletedCustomer);
+            _customerDal.Delete(mapCustomer);
+            return new SuccessResult();
         }
 
-        public List<Customer> GetAll()
+        public IDataResult<List<CustomerShowDto>> GetAll()
         {
-             return _customerDal.GetList();
+            var customerList=_customerDal.GetList();
+            var mapCustomerList= _mapper.Map<List<CustomerShowDto>>(customerList);
+            return new SuccessDataResult<List<CustomerShowDto>>(mapCustomerList);
         }
 
-        /// <summary>
-        /// ulke telefon kodlarina gore musterileri getirir
-        /// </summary>
-        /// <param name="phoneCode">ulke telefon kodu</param>
-        /// <returns>musteri listesi doner </returns>
-        public List<Customer> GetAllByPhoneCode(string phoneCode)
+     
+        public IDataResult<CustomerShowDto> GetById(int id)
         {
-            return _customerDal.GetList(c=>c.PhoneCode==phoneCode);
-        }
-        
-        public Customer GetById(int id)
-        {
-            return _customerDal.Get(c => c.Id == id);
+            var customer = _customerDal.Get(c => c.Id == id);
+            var mapCustomer = _mapper.Map<CustomerShowDto>(customer);
+            return new SuccessDataResult<CustomerShowDto>(mapCustomer);
         }
 
-        public Customer FindPhone(string phoneNu)
+        public IDataResult<Customer> FindPhone(string phoneNu)
         {
-            return _customerDal.Get(c => c.PhoneNumber == phoneNu);
+            var customer = _customerDal.Get(c => c.PhoneNumber == phoneNu);
+            return new SuccessDataResult<Customer>(customer);
         }
         
         
         [FluentValidation(typeof(CustomerValidator))]
-        public void Update(CustomerUpdateDto updatedT)
+        public IResult Update(CustomerUpdateDto updatedCustomer)
         {
-            _customerDal.Update(_mapper.Map<Customer>(updatedT));
+            var mapCustomer = _mapper.Map<Customer>(updatedCustomer);
+            _customerDal.Update(mapCustomer);
+            return new SuccessResult();
         }
     }
 }

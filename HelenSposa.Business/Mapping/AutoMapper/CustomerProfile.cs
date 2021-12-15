@@ -18,6 +18,13 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             
             CreateMap<CustomerUpdateDto, Customer>();
             CreateMap<Customer, CustomerUpdateDto>();
+
+            CreateMap<CustomerDeleteDto, Customer>();
+            CreateMap<Customer, CustomerDeleteDto>();
+
+            CreateMap<CustomerShowDto, Customer>();
+            CreateMap<Customer, CustomerShowDto>();
+
         }
     }
 }

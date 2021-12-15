@@ -1,4 +1,5 @@
-﻿using HelenSposa.Entities.Concrete;
+﻿using HelenSposa.Core.Utilities.Result;
+using HelenSposa.Entities.Concrete;
 using HelenSposa.Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,16 @@ namespace HelenSposa.Business.Abstract
 {
     public interface ICustomerService
     {
-        List<Customer> GetAll();
+        IDataResult<List<CustomerShowDto>> GetAll();
 
-        List<Customer> GetAllByPhoneCode(string phoneCode);
+        IDataResult<CustomerShowDto> GetById(int id);
 
-        Customer GetById(int id);
+        IDataResult<Customer> FindPhone(string phoneNu);
 
-        Customer FindPhone(string phoneNu);
+        IResult Add(CustomerAddDto addedCustomer);
 
-        void Add(CustomerAddDto addedCustomer);
+        IResult Update(CustomerUpdateDto updatedCustomer);
 
-        void Update(CustomerUpdateDto updatedCustomer);
-
-        void Delete(Customer deletedCustomer);
+        IResult Delete(CustomerDeleteDto deletedCustomer);
     }
 }

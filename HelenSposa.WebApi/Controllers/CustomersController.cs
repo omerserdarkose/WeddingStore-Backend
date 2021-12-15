@@ -1,4 +1,5 @@
 ﻿using HelenSposa.Business.Abstract;
+using HelenSposa.Entities;
 using HelenSposa.Entities.Concrete;
 using HelenSposa.Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,11 @@ namespace HelenSposa.WebApi.Controllers
         public IActionResult Get()
         {
             var result = _customerManager.GetAll();
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
             return Ok(result);
         }
 
@@ -36,56 +42,52 @@ namespace HelenSposa.WebApi.Controllers
         public IActionResult Get(int id)
         {
             var result = _customerManager.GetById(id);
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
             return Ok(result);
         }
-
-        [HttpGet("{pCode}")]
-        public IActionResult Get(string pCode)
-        {
-            var result = _customerManager.GetAllByPhoneCode(pCode);
-            return Ok(result);
-        }
-
+        
         // POST <CustomersController>
         [HttpPost]
         public IActionResult Post([FromBody] CustomerAddDto newCustomer)
         {
-            var customer = _customerManager.FindPhone(newCustomer.PhoneNumber);
+            var result = _customerManager.Add(newCustomer);
 
-            if (customer != null)
+            if (!result.Success)
             {
-                return BadRequest();
+                return BadRequest(result);
             }
-            _customerManager.Add(newCustomer);
-            return Ok(newCustomer);
+            return Ok(result);
         }
 
         // PUT <CustomersController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] CustomerUpdateDto updCustomer)
         {
-            var customer = _customerManager.GetById(id);
+            var result=_customerManager.Update(updCustomer);
 
-            if (customer == null)
+            if (!result.Success)
             {
-                return BadRequest();
+                return BadRequest(result);
             }
-            _customerManager.Update(updCustomer);
-            return Ok(updCustomer);
+            return Ok(result);
         }
 
         // DELETE <CustomersController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var customer = _customerManager.GetById(id);
 
-            if (customer == null)
+            var result= _customerManager.Delete(new CustomerDeleteDto { Id=id});
+
+            if (!result.Success)
             {
-                return BadRequest();
+                return BadRequest(result);
             }
-            _customerManager.Delete(customer);
-            return Ok();
+            return Ok(result);
         }
     }
 }
