@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using HelenSposa.Entities.Dtos;
 using AutoMapper;
 using HelenSposa.Core.Utilities.Result;
+using HelenSposa.Business.Constant;
 
 namespace HelenSposa.Business.Concrete.Managers
 {
@@ -33,14 +34,14 @@ namespace HelenSposa.Business.Concrete.Managers
         {
             var mapCustomer=_mapper.Map<Customer>(addedCustomer);
             _customerDal.Add(mapCustomer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerAdded);
         }
 
         public IResult Delete(CustomerDeleteDto deletedCustomer)
         {
             var mapCustomer = _mapper.Map<Customer>(deletedCustomer);
             _customerDal.Delete(mapCustomer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerDeleted);
         }
 
         public IDataResult<List<CustomerShowDto>> GetAll()
@@ -70,7 +71,7 @@ namespace HelenSposa.Business.Concrete.Managers
         {
             var mapCustomer = _mapper.Map<Customer>(updatedCustomer);
             _customerDal.Update(mapCustomer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerUpdated);
         }
     }
 }

@@ -3,7 +3,6 @@ using HelenSposa.Entities;
 using HelenSposa.Entities.Concrete;
 using HelenSposa.Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;

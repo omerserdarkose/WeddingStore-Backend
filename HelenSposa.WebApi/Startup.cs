@@ -1,6 +1,5 @@
 using HelenSposa.Business.Abstract;
 using HelenSposa.Business.Concrete.Managers;
-using HelenSposa.Business.DependencyResolvers.Ninject;
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.DataAccess.Concrete.EntityFramework;
 using HelenSposa.Entities.Concrete;
@@ -14,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,9 +36,6 @@ namespace HelenSposa.WebApi
         {
             services.AddControllers();
             services.AddAutoMapper(typeof(CustomerProfile));
-            services.AddSingleton<ICustomerService, CustomerManager>();
-            services.AddTransient<ICustomerDal, EfCustomerDal>();
-            services.AddScoped<DbContext, HelenSposaDbContext>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HelenSposa.WebApi", Version = "v1" });
