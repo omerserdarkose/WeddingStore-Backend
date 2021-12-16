@@ -1,6 +1,6 @@
 ﻿using HelenSposa.Core.Entities;
 
-namespace HelenSposa.Entities.Dtos
+namespace HelenSposa.Entities.Dtos.Customer
 {
     public class CustomerDeleteDto:IDto,IInfo
     {

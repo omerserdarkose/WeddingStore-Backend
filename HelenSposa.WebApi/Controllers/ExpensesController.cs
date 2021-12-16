@@ -1,7 +1,5 @@
 ﻿using HelenSposa.Business.Abstract;
-using HelenSposa.Entities;
-using HelenSposa.Entities.Concrete;
-using HelenSposa.Entities.Dtos.Customer;
+using HelenSposa.Entities.Dtos.Expense;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,20 +12,21 @@ namespace HelenSposa.WebApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class ExpensesController : ControllerBase
     {
-        private ICustomerService _customerManager;
+        private IExpenseService _expenseManager;
 
-        public CustomersController(ICustomerService customerManager)
+        public ExpensesController(IExpenseService expenseManager)
         {
-            _customerManager = customerManager;
+            _expenseManager = expenseManager;
         }
 
-        // GET: <CustomersController>
+
+        // GET: api/<ExpensesController>
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _customerManager.GetAll();
+            var result = _expenseManager.GetAll();
 
             if (!result.Success)
             {
@@ -36,24 +35,18 @@ namespace HelenSposa.WebApi.Controllers
             return Ok(result);
         }
 
-        // GET api/<CustomersController>/5
+        // GET api/<ExpensesController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public string Get(int id)
         {
-            var result = _customerManager.GetById(id);
-
-            if (!result.Success)
-            {
-                return BadRequest(result);
-            }
-            return Ok(result);
+            return "value";
         }
-        
-        // POST <CustomersController>
+
+        // POST api/<ExpensesController>
         [HttpPost]
-        public IActionResult Post([FromBody] CustomerAddDto newCustomer)
+        public IActionResult Post([FromBody] ExpenseAddDto newExpense)
         {
-            var result = _customerManager.Add(newCustomer);
+            var result = _expenseManager.Add(newExpense);
 
             if (!result.Success)
             {
@@ -62,11 +55,11 @@ namespace HelenSposa.WebApi.Controllers
             return Ok(result);
         }
 
-        // PUT <CustomersController>/5
+        // PUT api/<ExpensesController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] CustomerUpdateDto updCustomer)
+        public IActionResult Put(int id, [FromBody] ExpenseUpdateDto updExpense)
         {
-            var result=_customerManager.Update(updCustomer);
+            var result = _expenseManager.Update(updExpense);
 
             if (!result.Success)
             {
@@ -75,12 +68,11 @@ namespace HelenSposa.WebApi.Controllers
             return Ok(result);
         }
 
-        // DELETE <CustomersController>/5
+        // DELETE api/<ExpensesController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-
-            var result= _customerManager.Delete(new CustomerDeleteDto { Id=id});
+            var result = _expenseManager.Delete(new ExpenseDeleteDto { Id = id });
 
             if (!result.Success)
             {

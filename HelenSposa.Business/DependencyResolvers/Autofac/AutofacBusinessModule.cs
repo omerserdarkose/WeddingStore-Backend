@@ -24,8 +24,8 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
             builder.RegisterType<ExpenseTypeManager>().As<IExpenseTypeService>();
             builder.RegisterType<EfExpenseTypeDal>().As<IExpenseTypeDal>();
 
-
-
+            builder.RegisterType<ExpenseManager>().As<IExpenseService>();
+            builder.RegisterType<EfExpenseDal>().As<IExpenseDal>();
         }
     }
 }

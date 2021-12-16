@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelenSposa.Entities.Dtos
+namespace HelenSposa.Entities.Dtos.Customer
 {
     public class CustomerAddDto:IDto,IInfo
     {

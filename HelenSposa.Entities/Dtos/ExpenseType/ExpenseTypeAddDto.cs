@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelenSposa.Entities.Dtos
+namespace HelenSposa.Entities.Dtos.ExpenseType
 {
-    public class ExpenseTypeGeneralDto:IDto
+    public class ExpenseTypeAddDto:IDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

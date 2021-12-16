@@ -1,6 +1,6 @@
 ﻿using HelenSposa.Core.Utilities.Result;
 using HelenSposa.Entities.Concrete;
-using HelenSposa.Entities.Dtos;
+using HelenSposa.Entities.Dtos.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;

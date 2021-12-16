@@ -15,5 +15,9 @@ namespace HelenSposa.Business.Constant
         public static string ExpenseTypeAdded = "Gider türü başarıyla eklendi";
         public static string ExpenseTypeDeleted = "Gider türü başarıyla silindi";
         public static string ExpenseTypeUpdated = "Gider türü başarıyla güncellendi";
+
+        public static string ExpenseAdded = "Gider başarıyla eklendi";
+        public static string ExpenseDeleted = "Gider başarıyla silindi";
+        public static string ExpenseUpdated = "Gider başarıyla güncellendi";
     }
 }

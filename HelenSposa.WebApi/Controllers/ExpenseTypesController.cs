@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HelenSposa.Business.Abstract;
-using HelenSposa.Entities.Dtos;
+using HelenSposa.Entities.Dtos.ExpenseType;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HelenSposa.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ExpenseTypesController : ControllerBase
     {
@@ -36,7 +36,7 @@ namespace HelenSposa.WebApi.Controllers
         
         // POST api/<ExpenseTypesController>
         [HttpPost]
-        public IActionResult Post([FromBody] ExpenseTypeGeneralDto newExpenseType)
+        public IActionResult Post([FromBody] ExpenseTypeAddDto newExpenseType)
         {
             var result = _expenseTypeManager.Add(newExpenseType);
 
@@ -49,7 +49,7 @@ namespace HelenSposa.WebApi.Controllers
 
         // PUT api/<ExpenseTypesController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] ExpenseTypeGeneralDto updExpenseType)
+        public IActionResult Put(int id, [FromBody] ExpenseTypeUpdateDto updExpenseType)
         {
             var result = _expenseTypeManager.Update(updExpenseType);
 
@@ -64,7 +64,7 @@ namespace HelenSposa.WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var result = _expenseTypeManager.Delete(new ExpenseTypeGeneralDto { Id = id });
+            var result = _expenseTypeManager.Delete(new ExpenseTypeDeleteDto { Id = id });
 
             if (!result.Success)
             {

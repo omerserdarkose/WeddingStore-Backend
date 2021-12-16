@@ -1,6 +1,6 @@
 ﻿using HelenSposa.Core.Utilities.Result;
 using HelenSposa.Entities.Concrete;
-using HelenSposa.Entities.Dtos;
+using HelenSposa.Entities.Dtos.ExpenseType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +11,9 @@ namespace HelenSposa.Business.Abstract
 {
     public interface IExpenseTypeService
     {
-        IDataResult<List<ExpenseTypeGeneralDto>> GetAll();
-        IResult Add(ExpenseTypeGeneralDto addedExpenseType);
-        IResult Delete(ExpenseTypeGeneralDto deletedExpenseType);
-        IResult Update(ExpenseTypeGeneralDto updatedExpenseType);
+        IDataResult<List<ExpenseTypeShowDto>> GetAll();
+        IResult Add(ExpenseTypeAddDto addedExpenseType);
+        IResult Delete(ExpenseTypeDeleteDto deletedExpenseType);
+        IResult Update(ExpenseTypeUpdateDto updatedExpenseType);
     }
 }

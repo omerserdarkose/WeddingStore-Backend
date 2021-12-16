@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HelenSposa.Entities.Dtos;
+using HelenSposa.Entities.Dtos.Customer;
 using AutoMapper;
 using HelenSposa.Core.Utilities.Result;
 using HelenSposa.Business.Constant;
