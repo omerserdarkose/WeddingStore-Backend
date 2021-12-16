@@ -16,7 +16,7 @@ namespace HelenSposa.WebApi.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        ICustomerService _customerManager;
+        private ICustomerService _customerManager;
 
         public CustomersController(ICustomerService customerManager)
         {

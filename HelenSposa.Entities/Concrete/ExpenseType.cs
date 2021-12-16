@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace HelenSposa.Entities.Concrete
 {
-    public partial class ExpensesType : IEntity
+    public partial class ExpenseType : IEntity
     {
-        public ExpensesType()
+        public ExpenseType()
         {
             Expenses = new HashSet<Expense>();
         }

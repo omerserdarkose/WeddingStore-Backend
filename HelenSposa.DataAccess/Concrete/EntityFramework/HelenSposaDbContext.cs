@@ -26,7 +26,7 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<EventType> EventTypes { get; set; }
         public virtual DbSet<Expense> Expenses { get; set; }
-        public virtual DbSet<ExpensesType> ExpensesTypes { get; set; }
+        public virtual DbSet<ExpenseType> ExpenseTypes { get; set; }
         public virtual DbSet<Income> Incomes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
 
@@ -205,7 +205,7 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
                     .HasConstraintName("FK_Expenses_ExpensesTypes");
             });
 
-            modelBuilder.Entity<ExpensesType>(entity =>
+            modelBuilder.Entity<ExpenseType>(entity =>
             {
                 entity.HasIndex(e => e.Name, "UK_ExpensesTypes_Name")
                     .IsUnique();

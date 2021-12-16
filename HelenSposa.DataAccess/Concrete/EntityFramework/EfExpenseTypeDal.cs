@@ -1,4 +1,5 @@
-﻿using HelenSposa.Core.DataAccess.EntityFramework;
+﻿using HelenSposa.Core.DataAccess;
+using HelenSposa.Core.DataAccess.EntityFramework;
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.Entities.Concrete;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.DataAccess.Concrete.EntityFramework
 {
-    public class EfExpenseDal: EfEntityRepositoryBase<Expense,HelenSposaDbContext>,IExpenseDal
+    public class EfExpenseTypeDal:EfEntityRepositoryBase<ExpenseType,HelenSposaDbContext>,IExpenseTypeDal
     {
     }
 }

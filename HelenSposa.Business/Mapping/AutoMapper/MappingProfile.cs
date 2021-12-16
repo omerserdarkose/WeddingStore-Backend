@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Business.Mapping.AutoMapper
 {
-    public class CustomerProfile:Profile
+    public class MappingProfile:Profile
     {
-        public CustomerProfile()
+        public MappingProfile()
         {
             CreateMap<CustomerAddDto, Customer>();
             CreateMap<Customer, CustomerAddDto>();
@@ -24,6 +24,9 @@ namespace HelenSposa.Business.Mapping.AutoMapper
 
             CreateMap<CustomerShowDto, Customer>();
             CreateMap<Customer, CustomerShowDto>();
+
+            CreateMap<ExpenseTypeGeneralDto, ExpenseType>();
+            CreateMap<ExpenseType, ExpenseTypeGeneralDto>();
 
         }
     }

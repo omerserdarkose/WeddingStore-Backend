@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.DataAccess.Concrete.EntityFramework
 {
-    public class EfCustomerDal : EfEntityRepositoyBase<Customer, HelenSposaDbContext>, ICustomerDal
+    public class EfCustomerDal : EfEntityRepositoryBase<Customer, HelenSposaDbContext>, ICustomerDal
     {
     }
 }
