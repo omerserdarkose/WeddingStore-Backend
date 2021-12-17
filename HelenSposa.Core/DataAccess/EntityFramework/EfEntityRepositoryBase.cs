@@ -43,7 +43,7 @@ namespace HelenSposa.Core.DataAccess.EntityFramework
             }
         }
 
-        public List<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
+        public virtual List<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context=new TContext())
             {

@@ -12,6 +12,5 @@ namespace HelenSposa.DataAccess.Abstract
 {
     public interface IExpenseDal:IEntityRepository<Expense>
     {
-        List<ExpenseShowDto> GetExpenseForShow();
     }
 }

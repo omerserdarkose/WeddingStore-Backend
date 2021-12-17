@@ -40,8 +40,9 @@ namespace HelenSposa.Business.Concrete.Managers
 
         public IDataResult<List<ExpenseShowDto>> GetAll()
         {
-            var expenseList = _expenseDal.GetExpenseForShow();
-            return new SuccessDataResult<List<ExpenseShowDto>>(expenseList);
+            var expenseList = _expenseDal.GetList();
+            var mapExpenseList = _mapper.Map<List<ExpenseShowDto>>(expenseList);
+            return new SuccessDataResult<List<ExpenseShowDto>>(mapExpenseList);
         }
 
         public IResult Update(ExpenseUpdateDto updatedExpense)

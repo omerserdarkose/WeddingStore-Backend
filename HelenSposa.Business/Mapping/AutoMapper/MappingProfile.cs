@@ -48,7 +48,7 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             CreateMap<ExpenseUpdateDto, Expense>();
             CreateMap<Expense, ExpenseUpdateDto>();
 
-            //CreateMap<ExpenseShowDto, opt=> { }();
+            CreateMap<Expense, ExpenseShowDto>().ForMember(d=>d.ExpenseType,opt=>opt.MapFrom(src=>src.Type.Name));
 
         }
     }

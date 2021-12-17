@@ -2,6 +2,7 @@
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.Entities.Concrete;
 using HelenSposa.Entities.Dtos.Expense;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +14,12 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
 {
     public class EfExpenseDal : EfEntityRepositoryBase<Expense, HelenSposaDbContext>, IExpenseDal
     {
-        public List<ExpenseShowDto> GetExpenseForShow()
+       public override List<Expense> GetList(Expression<Func<Expense, bool>> filter = null)
         {
             using (var context = new HelenSposaDbContext())
             {
-                var result = from exp in context.Expenses
-                             join et in context.ExpenseTypes
-                             on exp.TypeId equals et.Id
-                             select new ExpenseShowDto 
-                             {
-                                 Id=exp.Id,
-                                 TypeName=et.Name,
-                                 Amount=exp.Amount,
-                                 Date=exp.Date,
-                                 Description=exp.Description
-                             };
-                return result.ToList();
+                return filter == null ? context.Set<Expense>().Include(et => et.Type).ToList() : context.Set<Expense>().Include(et => et.Type).Where(filter).ToList();
             }
         }
-
     }
 }

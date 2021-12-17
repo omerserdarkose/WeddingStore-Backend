@@ -10,7 +10,7 @@ namespace HelenSposa.Entities.Dtos.Expense
     public class ExpenseShowDto:IDto
     {
         public int Id { get; set; }
-        public string TypeName { get; set; }
+        public string ExpenseType { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
