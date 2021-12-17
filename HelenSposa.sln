@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelenSposa.Core", "HelenSposa.Core\HelenSposa.Core.csproj", "{B24245A2-832C-4B41-A828-98B5AB6A9ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelenSposa.Core", "HelenSposa.Core\HelenSposa.Core.csproj", "{B24245A2-832C-4B41-A828-98B5AB6A9ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelenSposa.Entities", "HelenSposa.Entities\HelenSposa.Entities.csproj", "{1A9201C8-3B7C-4F48-95CD-693F09D0A5F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelenSposa.Entities", "HelenSposa.Entities\HelenSposa.Entities.csproj", "{1A9201C8-3B7C-4F48-95CD-693F09D0A5F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelenSposa.DataAccess", "HelenSposa.DataAccess\HelenSposa.DataAccess.csproj", "{0259B284-90FA-471A-9B40-188D5B7B3F63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelenSposa.DataAccess", "HelenSposa.DataAccess\HelenSposa.DataAccess.csproj", "{0259B284-90FA-471A-9B40-188D5B7B3F63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelenSposa.Business", "HelenSposa.Business\HelenSposa.Business.csproj", "{98E92ADC-8771-4EBE-94AE-627B72DF13FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelenSposa.Business", "HelenSposa.Business\HelenSposa.Business.csproj", "{98E92ADC-8771-4EBE-94AE-627B72DF13FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelenSposa.WebApi", "HelenSposa.WebApi\HelenSposa.WebApi.csproj", "{703DCFD7-A290-418A-8552-97FBC9D73BDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelenSposa.WebApi", "HelenSposa.WebApi\HelenSposa.WebApi.csproj", "{703DCFD7-A290-418A-8552-97FBC9D73BDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{117CC076-1EE9-4F8B-ADBA-3A0634802C6A}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
