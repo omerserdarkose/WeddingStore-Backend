@@ -1,4 +1,5 @@
 ﻿using System;
+using HelenSposa.Core.Entities.Concrete;
 using HelenSposa.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -29,6 +30,9 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
         public virtual DbSet<ExpenseType> ExpenseTypes { get; set; }
         public virtual DbSet<Income> Incomes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<OperationClaim> OperationClaims { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -248,6 +252,57 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
                     .IsRequired()
                     .HasMaxLength(30)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<OperationClaim>(entity =>
+            {
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PasswordHash)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PasswordSalt)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<UserOperationClaim>(entity =>
+            {
+                entity.HasOne(d => d.OperationClaim)
+                    .WithMany(p => p.UserOperationClaims)
+                    .HasForeignKey(d => d.OperationClaimId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserOperationClaims_OperationClaims");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.UserOperationClaims)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserOperationClaims_Users");
             });
 
             OnModelCreatingPartial(modelBuilder);

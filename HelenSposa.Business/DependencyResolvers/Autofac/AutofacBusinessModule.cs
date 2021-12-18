@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Business.DependencyResolvers.Autofac
 {
-    public class AutofacBusinessModule:Module
+    public class AutofacBusinessModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -26,6 +26,10 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<ExpenseManager>().As<IExpenseService>();
             builder.RegisterType<EfExpenseDal>().As<IExpenseDal>();
+
+            builder.RegisterType<UserManager>().As<IUserService>();
+            builder.RegisterType<EfUserDal>().As<IUserDal>();
+
         }
     }
 }
