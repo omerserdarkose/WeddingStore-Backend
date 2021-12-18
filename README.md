@@ -22,3 +22,4 @@
 - **Dependency Injection** ve IoC Container(**Autofac**) kullanimi
 - **AutoMapper** kutuphanesine ait kullanim ornekleri
 - **FluentValidation** kutuphanesine ait kullanim ornekleri
+- **JWT** kutuphanesine ait kullanim ornekleri
