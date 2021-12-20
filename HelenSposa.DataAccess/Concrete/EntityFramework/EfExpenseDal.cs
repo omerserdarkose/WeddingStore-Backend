@@ -21,5 +21,13 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
                 return filter == null ? context.Set<Expense>().Include(et => et.Type).ToList() : context.Set<Expense>().Include(et => et.Type).Where(filter).ToList();
             }
         }
+
+        public override Expense Get(Expression<Func<Expense, bool>> filter)
+        {
+            using (var context = new HelenSposaDbContext())
+            {
+                return context.Set<Expense>().Include(et => et.Type).SingleOrDefault(filter);
+            }
+        }
     }
 }

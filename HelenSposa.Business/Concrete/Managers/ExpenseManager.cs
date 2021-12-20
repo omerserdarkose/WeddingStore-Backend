@@ -45,6 +45,13 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<List<ExpenseShowDto>>(mapExpenseList);
         }
 
+        public IDataResult<ExpenseShowDto> GetById(int id)
+        {
+            var expense = _expenseDal.Get(e => e.Id == id);
+            var mapExpense = _mapper.Map<ExpenseShowDto>(expense);
+            return new SuccessDataResult<ExpenseShowDto>(mapExpense);
+        }
+
         public IResult Update(ExpenseUpdateDto updatedExpense)
         {
             var mapExpense = _mapper.Map<Expense>(updatedExpense);

@@ -37,9 +37,15 @@ namespace HelenSposa.WebApi.Controllers
 
         // GET api/<ExpensesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var result = _expenseManager.GetById(id);
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
         }
 
         // POST api/<ExpensesController>

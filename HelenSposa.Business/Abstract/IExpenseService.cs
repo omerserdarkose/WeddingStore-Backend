@@ -11,8 +11,13 @@ namespace HelenSposa.Business.Abstract
     public interface IExpenseService
     {
         IDataResult<List<ExpenseShowDto>> GetAll();
+
+        IDataResult<ExpenseShowDto> GetById(int id);
+
         IResult Add(ExpenseAddDto addedExpense);
+
         IResult Delete(ExpenseDeleteDto deletedExpense);
+
         IResult Update(ExpenseUpdateDto updatedExpense);
     }
 }
