@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using HelenSposa.Business.Abstract;
 using HelenSposa.Business.Concrete.Managers;
+using HelenSposa.Core.Utilities.Security;
+using HelenSposa.Core.Utilities.Security.Jwt;
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.DataAccess.Concrete.EntityFramework;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +31,13 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
+
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+
+
+
+
 
         }
     }

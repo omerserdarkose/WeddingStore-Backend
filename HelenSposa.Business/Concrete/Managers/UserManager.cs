@@ -24,13 +24,13 @@ namespace HelenSposa.Business.Concrete.Managers
         public IResult Add(User addUser)
         {
             _userDal.Add(addUser);
-            return new SuccessResult(Messages.UserAdded);
+            return new SuccessResult();
         }
 
-        public IDataResult<User> GetByMail(string eMail)
+        public User GetByMail(string eMail)
         {
             var user=_userDal.Get(u => u.Email == eMail);
-            return new SuccessDataResult<User>(user);
+            return user;
         }
 
         public IDataResult<List<OperationClaimShowDto>> GetClaims(User user)

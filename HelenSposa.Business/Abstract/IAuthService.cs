@@ -12,11 +12,11 @@ namespace HelenSposa.Business.Abstract
 {
     public interface IAuthService
     {
-        IDataResult<User> Resgister(UserRegisterDto userRegisterDto, string password);
+        IDataResult<User> Register(UserRegisterDto userRegisterDto);
 
         IDataResult<User> Login(UserLoginDto userLoginDto);
 
-        IResult UserExists(string email);
+        IResult UserNotExists(string email);
 
         IDataResult<AccessToken> CreateAccessToken(User user);
 

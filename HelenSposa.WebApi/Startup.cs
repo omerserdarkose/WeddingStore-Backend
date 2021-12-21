@@ -19,6 +19,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using HelenSposa.Business.Mapping.AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using HelenSposa.Core.Utilities.Security;
+using HelenSposa.Core.Utilities.Security.Encyption;
 
 namespace HelenSposa.WebApi
 {
@@ -34,8 +37,27 @@ namespace HelenSposa.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
             services.AddControllers();
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddCors(option =>
+            {
+                option.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:44323"));
+            });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+                options => options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience,
+                    IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HelenSposa.WebApi", Version = "v1" });
@@ -51,10 +73,13 @@ namespace HelenSposa.WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HelenSposa.WebApi v1"));
             }
+            app.UseCors(builder => builder.WithOrigins("http://localhost:44323").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // app.UseAuthentication();
 
             app.UseAuthorization();
 

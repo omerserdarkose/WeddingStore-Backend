@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelenSposa.Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,11 @@ namespace HelenSposa.Business.Constant
         public static string ExpenseDeleted = "Gider başarıyla silindi";
         public static string ExpenseUpdated = "Gider başarıyla güncellendi";
 
-        public static string UserAdded = "Kullanici başarıyla eklendi";
+        public static string UserNotFound = "Bu email ile kayitli kullanici bulunmamaktadir!";
+        internal static string PasswordNotMatch = "Girilen parola hatali";
+        internal static string SuccessfulLogin = "Kullanici girisi basarili";
+        internal static string UserAlreadyExist = "Bu mail ile kayitli bir kullanici zaten mevcut";
+        internal static string UserRegistered = "Kullanici basariyla kaydedildi";
+        internal static string AccessTokenCreated = "Access Token olusturuldu";
     }
 }

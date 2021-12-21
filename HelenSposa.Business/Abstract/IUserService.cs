@@ -15,6 +15,6 @@ namespace HelenSposa.Business.Abstract
 
         IResult Add(User addUser);
 
-        IDataResult<User> GetByMail(string eMail);
+        User GetByMail(string eMail);
     }
 }
