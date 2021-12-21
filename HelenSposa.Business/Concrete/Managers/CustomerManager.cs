@@ -44,18 +44,36 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessResult(Messages.CustomerDeleted);
         }
 
+
         public IDataResult<List<CustomerShowDto>> GetAll()
         {
+            //dataAccess katmanina gidilerek tum musteri listesi getiriliyor
             var customerList=_customerDal.GetList();
+
+            //gelen liste UI da gosterilecek formata map ediliyor
             var mapCustomerList= _mapper.Map<List<CustomerShowDto>>(customerList);
+
+            //map edilmis liste Result ile sarmallanarak api'ye donduruluyor
             return new SuccessDataResult<List<CustomerShowDto>>(mapCustomerList);
         }
 
      
         public IDataResult<CustomerShowDto> GetById(int id)
         {
+            //dataAccess katmanina gidilerek belirtilen id'ye sahip musteri getiriliyor
             var customer = _customerDal.Get(c => c.Id == id);
+
+            //eger musteri id'sinde kayit yoksa
+            if (customer==null)
+            {
+                //api'ye hata mesaji gonderiliyor
+                return new ErrorDataResult<CustomerShowDto>(Messages.CustomerNotFound);
+            }
+
+            //getirilen kayit UI da gosterilecek formata map ediliyor
             var mapCustomer = _mapper.Map<CustomerShowDto>(customer);
+
+            //map edilmis kayit Result ile sarmallanarak api'ye donduruluyor
             return new SuccessDataResult<CustomerShowDto>(mapCustomer);
         }
 

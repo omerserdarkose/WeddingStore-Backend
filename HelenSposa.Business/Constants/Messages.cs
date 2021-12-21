@@ -12,6 +12,7 @@ namespace HelenSposa.Business.Constant
         public static string CustomerAdded = "Müşteri başarıyla eklendi";
         public static string CustomerDeleted = "Müşteri başarıyla silindi";
         public static string CustomerUpdated = "Müşteri başarıyla güncellendi";
+        internal static string CustomerNotFound = "Belirtilen musteri kayitlarda bulunmamaktadir!";
 
         public static string ExpenseTypeAdded = "Gider türü başarıyla eklendi";
         public static string ExpenseTypeDeleted = "Gider türü başarıyla silindi";
@@ -27,5 +28,6 @@ namespace HelenSposa.Business.Constant
         internal static string UserAlreadyExist = "Bu mail ile kayitli bir kullanici zaten mevcut";
         internal static string UserRegistered = "Kullanici basariyla kaydedildi";
         internal static string AccessTokenCreated = "Access Token olusturuldu";
+
     }
 }

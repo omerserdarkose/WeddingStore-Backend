@@ -23,48 +23,48 @@ namespace HelenSposa.WebApi.Controllers
             _customerManager = customerManager;
         }
 
-        // GET: <CustomersController>
+        //tum musterileri getiren GET methodu
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             var result = _customerManager.GetAll();
 
             if (!result.Success)
             {
-                return BadRequest(result);
+                return BadRequest(result.Message);
             }
             return Ok(result);
         }
 
-        // GET api/<CustomersController>/5
+        //id'ye gore tek bir musteriyi getiren GET methodu
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetId(int id)
         {
             var result = _customerManager.GetById(id);
 
             if (!result.Success)
             {
-                return BadRequest(result);
+                return BadRequest(result.Message);
             }
             return Ok(result);
         }
         
-        // POST <CustomersController>
+        //yeni musteri kaydi yapan POST methodu
         [HttpPost]
-        public IActionResult Post([FromBody] CustomerAddDto newCustomer)
+        public IActionResult AddCustomer([FromBody] CustomerAddDto newCustomer)
         {
             var result = _customerManager.Add(newCustomer);
 
             if (!result.Success)
             {
-                return BadRequest(result);
+                return BadRequest(result.Message);
             }
             return Ok(result);
         }
 
-        // PUT <CustomersController>/5
+        //musteriyi guncelleyen PUT methodu
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] CustomerUpdateDto updCustomer)
+        public IActionResult UpdateCustomer(int id, [FromBody] CustomerUpdateDto updCustomer)
         {
             var result=_customerManager.Update(updCustomer);
 
@@ -75,9 +75,9 @@ namespace HelenSposa.WebApi.Controllers
             return Ok(result);
         }
 
-        // DELETE <CustomersController>/5
+        //musteriyi silen DELETE methodu
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult DeleteCustomer(int id)
         {
 
             var result= _customerManager.Delete(new CustomerDeleteDto { Id=id});
