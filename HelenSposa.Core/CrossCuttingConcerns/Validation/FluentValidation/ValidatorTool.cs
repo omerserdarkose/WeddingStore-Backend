@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Core.CrossCuttingConcerns.Validation.FluentValidation
 {
-    public class ValidatorTool
+    
+    public static class ValidatorTool
     {
-        public static void FluentValidate(IValidator validator,object entity)
+        /// <summary>
+        /// validasyon islemlerini merkezilestirmek icin kullanilacak validasyon kurallarini ve valide edilecek objeyi alip 
+        /// validasyon gecersiz olursa hata dondurur
+        /// </summary>
+        /// <param name="validator">validasyon kurallarini iceren sinif</param>
+        /// <param name="entity">valide edilecek obje</param>
+        public static void Validate(IValidator validator,object entity)
         {
             var context = new ValidationContext<object>(entity);
             var result = validator.Validate(context);
-            if (result.Errors.Count>0)
+            if (!result.IsValid)
             {
                 throw new ValidationException(result.Errors);
             }

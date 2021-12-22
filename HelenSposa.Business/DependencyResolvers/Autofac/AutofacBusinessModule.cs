@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using HelenSposa.Business.Abstract;
 using HelenSposa.Business.Concrete.Managers;
+using HelenSposa.Core.Utilities.Interceptors;
 using HelenSposa.Core.Utilities.Security;
 using HelenSposa.Core.Utilities.Security.Jwt;
 using HelenSposa.DataAccess.Abstract;
@@ -35,8 +38,13 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
             builder.RegisterType<AuthManager>().As<IAuthService>();
 
+            //yurutulmekte olan assemblyi aliyoruz
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
-
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces().EnableInterfaceInterceptors(new ProxyGenerationOptions() 
+            {
+                Selector=new AspectInterceptorSelector()
+            }).SingleInstance();
 
 
         }

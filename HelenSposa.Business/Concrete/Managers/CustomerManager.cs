@@ -1,7 +1,6 @@
 ﻿using HelenSposa.Business.Abstract;
 using HelenSposa.Business.ValidationRules.FluentValidation;
 using HelenSposa.Core.CrossCuttingConcerns.Validation.FluentValidation;
-using HelenSposa.Core.Aspects.Postsharp;
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.Entities.Concrete;
 using System;
@@ -13,6 +12,7 @@ using HelenSposa.Entities.Dtos.Customer;
 using AutoMapper;
 using HelenSposa.Core.Utilities.Result;
 using HelenSposa.Business.Constant;
+using HelenSposa.Core.Aspects.Autofac;
 
 namespace HelenSposa.Business.Concrete.Managers
 {
@@ -28,8 +28,8 @@ namespace HelenSposa.Business.Concrete.Managers
             _mapper = mapper;
         }
 
-        //attribute calismiyor suan postsharp activation ile ilgili bir problem var tekrar bakilmali
-        [FluentValidation(typeof(CustomerValidator))]
+
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(CustomerAddDto addedCustomer)
         {
             var mapCustomer=_mapper.Map<Customer>(addedCustomer);
@@ -82,9 +82,9 @@ namespace HelenSposa.Business.Concrete.Managers
             var customer = _customerDal.Get(c => c.PhoneNumber == phoneNu);
             return new SuccessDataResult<Customer>(customer);
         }
-        
-        
-        [FluentValidation(typeof(CustomerValidator))]
+
+
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(CustomerUpdateDto updatedCustomer)
         {
             var mapCustomer = _mapper.Map<Customer>(updatedCustomer);
