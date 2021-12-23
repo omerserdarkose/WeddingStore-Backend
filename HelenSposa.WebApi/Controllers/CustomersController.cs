@@ -60,7 +60,7 @@ namespace HelenSposa.WebApi.Controllers
                 return BadRequest(result.Message);
             }
             return Ok(result);
-        }
+         }
 
         //musteriyi guncelleyen PUT methodu
         [HttpPut("{id}")]

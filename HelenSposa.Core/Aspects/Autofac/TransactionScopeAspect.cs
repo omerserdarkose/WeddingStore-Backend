@@ -17,7 +17,7 @@ namespace HelenSposa.Core.Aspects.Autofac
     {
         public override void Intercept(IInvocation invocation)
         {
-            //transaction scope instance olusuruluyor
+            //transactionScope instance olusuruluyor ve baslamis oluyor
             using (TransactionScope transactionScope=new TransactionScope())
             {
                 try
@@ -32,7 +32,7 @@ namespace HelenSposa.Core.Aspects.Autofac
                 catch (Exception)
                 {
                     //hata alinirsa
-                    //transaction kapsamindaki islmeler iptal ediliyor
+                    //transaction kapsamindaki islemler iptal ediliyor
                     transactionScope.Dispose();
 
                     //hata yukari yollaniyor
