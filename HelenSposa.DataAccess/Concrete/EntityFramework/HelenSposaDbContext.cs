@@ -305,6 +305,21 @@ namespace HelenSposa.DataAccess.Concrete.EntityFramework
                     .HasConstraintName("FK_UserOperationClaims_Users");
             });
 
+            modelBuilder.Entity<Log>(entity =>
+            {
+                entity.HasIndex(e => e.Date, "IX_Logs_Date")
+                    .HasFillFactor((byte)10);
+
+                entity.Property(e => e.Audit)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.Detail).IsRequired();
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 

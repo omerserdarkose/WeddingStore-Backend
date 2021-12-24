@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,11 +24,11 @@ namespace HelenSposa.Business.Constant
         public static string ExpenseUpdated = "Gider başarıyla güncellendi";
 
         public static string UserNotFound = "Bu email ile kayitli kullanici bulunmamaktadir!";
-        internal static string PasswordNotMatch = "Girilen parola hatali";
-        internal static string SuccessfulLogin = "Kullanici girisi basarili";
-        internal static string UserAlreadyExist = "Bu mail ile kayitli bir kullanici zaten mevcut";
-        internal static string UserRegistered = "Kullanici basariyla kaydedildi";
-        internal static string AccessTokenCreated = "Access Token olusturuldu";
-
+        public static string PasswordNotMatch = "Girilen parola hatali";
+        public static string SuccessfulLogin = "Kullanici girisi basarili";
+        public static string UserAlreadyExist = "Bu mail ile kayitli bir kullanici zaten mevcut";
+        public static string UserRegistered = "Kullanici basariyla kaydedildi";
+        public static string AccessTokenCreated = "Access Token olusturuldu";
+        public static string AuthorizationDenied = "Islem icin yetkiniz bulunmamaktadir. Lutfen yoneticinize basvurunuz";
     }
 }

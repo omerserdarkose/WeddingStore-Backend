@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HelenSposa.Business.Abstract;
+using HelenSposa.Business.Aspects.Autofac;
 using HelenSposa.Business.Constant;
 using HelenSposa.Core.Aspects.Autofac;
 using HelenSposa.Core.Utilities.Result;
@@ -40,7 +41,8 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessResult(Messages.ExpenseDeleted);
         }
 
-        [CacheAspect(duration:1)]
+        [CacheAspect(duration:1,Priority =2)]
+        [SecuredOperation("admin",Priority =1)]
         public IDataResult<List<ExpenseShowDto>> GetAll()
         {
             var expenseList = _expenseDal.GetList();

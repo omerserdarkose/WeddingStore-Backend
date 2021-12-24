@@ -1,5 +1,6 @@
 ﻿using HelenSposa.Business.Abstract;
 using HelenSposa.Entities.Dtos.Expense;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,7 @@ namespace HelenSposa.WebApi.Controllers
 
         // GET api/<ExpensesController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles ="admin")]
         public IActionResult GetById(int id)
         {
             var result = _expenseManager.GetById(id);

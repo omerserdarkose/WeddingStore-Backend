@@ -1,6 +1,7 @@
 ﻿using HelenSposa.Core.CrossCuttingConcerns.Caching;
 using HelenSposa.Core.CrossCuttingConcerns.Caching.Microsoft;
 using HelenSposa.Core.Utilities.IoC;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace HelenSposa.Core.DependecyResolver
         {
             services.AddMemoryCache();
             services.AddSingleton<ICacheManager, MemoryCacheManager>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
     }
 }
