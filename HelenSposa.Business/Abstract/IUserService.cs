@@ -13,8 +13,15 @@ namespace HelenSposa.Business.Abstract
     {
         IDataResult<List<OperationClaimShowDto>> GetClaims(User user);
 
+        //IDataResult<List<UserShowDto>> GetAll();
+
         IResult Add(User addUser);
 
         User GetByMail(string eMail);
+
+        IResult Delete(int id);
+
+        //IResult SetClaims (User user, List<OperationClaim> operationClaims);
+        //kullaniciya yetki ilaveleri yapan bir method yazilacak, user ile ilgili diger 2 tablo dahil edildikten sonra
     }
 }

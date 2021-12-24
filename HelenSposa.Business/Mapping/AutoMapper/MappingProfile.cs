@@ -36,18 +36,12 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             CreateMap<ExpenseTypeAddDto, ExpenseType>();
             CreateMap<ExpenseType, ExpenseTypeAddDto>();
 
-            CreateMap<ExpenseTypeDeleteDto, ExpenseType>();
-            CreateMap<ExpenseType, ExpenseTypeDeleteDto>();
-
             CreateMap<ExpenseTypeUpdateDto, ExpenseType>();
             CreateMap<ExpenseType, ExpenseTypeUpdateDto>();
 
             CreateMap<ExpenseAddDto, Expense>();
             CreateMap<Expense, ExpenseAddDto>();
             
-            CreateMap<ExpenseDeleteDto, Expense>();
-            CreateMap<Expense, ExpenseDeleteDto>();
-
             CreateMap<ExpenseUpdateDto, Expense>();
             CreateMap<Expense, ExpenseUpdateDto>();
 

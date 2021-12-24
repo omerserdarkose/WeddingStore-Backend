@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using HelenSposa.Business.Abstract;
+using HelenSposa.Business.Aspects.Autofac;
 using HelenSposa.Business.Constant;
+using HelenSposa.Business.ValidationRules.FluentValidation;
+using HelenSposa.Core.Aspects.Autofac;
 using HelenSposa.Core.Utilities.Result;
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.Entities.Concrete;
@@ -24,6 +27,9 @@ namespace HelenSposa.Business.Concrete.Managers
             _mapper = mapper;
         }
 
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(ExpenseTypeAddValidator))]
+        [CacheRemoveAscpect("IExpenseTypeService.Get")]
         public IResult Add(ExpenseTypeAddDto addedExpenseType)
         {
             var mapExpenseType = _mapper.Map<ExpenseType>(addedExpenseType);
@@ -31,13 +37,16 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessResult(Messages.ExpenseTypeAdded);
         }
 
-        public IResult Delete(ExpenseTypeDeleteDto deletedExpenseType)
+        [SecuredOperation("admin")]
+        [CacheRemoveAscpect("IExpenseTypeService.Get")]
+        public IResult Delete(int id)
         {
-            var mapExpenseType = _mapper.Map<ExpenseType>(deletedExpenseType);
-            _expenseTypeDal.Delete(mapExpenseType);
+            _expenseTypeDal.Delete(new ExpenseType { Id=id});
             return new SuccessResult(Messages.ExpenseTypeDeleted);
         }
 
+        [SecuredOperation("admin,worker")]
+        [CacheAspect(duration: 10)]
         public IDataResult<List<ExpenseTypeShowDto>> GetAll()
         {
             var expenseTypeList = _expenseTypeDal.GetList();
@@ -45,6 +54,9 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<List<ExpenseTypeShowDto>>(mapExpenseTypeList);
         }
 
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(ExpenseTypeUpdateValidator))]
+        [CacheRemoveAscpect("IExpenseTypeService.Get")]
         public IResult Update(ExpenseTypeUpdateDto updatedExpenseType)
         {
             var mapExpenseType = _mapper.Map<ExpenseType>(updatedExpenseType);

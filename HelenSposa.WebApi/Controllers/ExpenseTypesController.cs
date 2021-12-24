@@ -21,7 +21,7 @@ namespace HelenSposa.WebApi.Controllers
             _expenseTypeManager = expenseTypeManager;
         }
 
-        // GET: api/<ExpenseTypesController>
+        // GET: <ExpenseTypesController>
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,9 +34,9 @@ namespace HelenSposa.WebApi.Controllers
             return Ok(result);
         }
         
-        // POST api/<ExpenseTypesController>
+        // POST <ExpenseTypesController>
         [HttpPost]
-        public IActionResult Post([FromBody] ExpenseTypeAddDto newExpenseType)
+        public IActionResult AddExpenseType([FromBody] ExpenseTypeAddDto newExpenseType)
         {
             var result = _expenseTypeManager.Add(newExpenseType);
 
@@ -48,8 +48,8 @@ namespace HelenSposa.WebApi.Controllers
         }
 
         // PUT api/<ExpenseTypesController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] ExpenseTypeUpdateDto updExpenseType)
+        [HttpPut("update")]
+        public IActionResult UpdateExpenseType([FromBody] ExpenseTypeUpdateDto updExpenseType)
         {
             var result = _expenseTypeManager.Update(updExpenseType);
 
@@ -62,9 +62,9 @@ namespace HelenSposa.WebApi.Controllers
 
         // DELETE api/<ExpenseTypesController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult DeleteExpenseType(int id)
         {
-            var result = _expenseTypeManager.Delete(new ExpenseTypeDeleteDto { Id = id });
+            var result = _expenseTypeManager.Delete(id);
 
             if (!result.Success)
             {

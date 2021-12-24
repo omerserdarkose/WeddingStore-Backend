@@ -5,6 +5,7 @@ using HelenSposa.Core.Utilities.Interceptors;
 using HelenSposa.Core.Utilities.Messages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,9 @@ namespace HelenSposa.Core.Aspects.Autofac
             var entityType = _validatorType.BaseType.GetGenericArguments()[0];
 
             //bu aspectin yazildigi methodun aldigi parametreleri gezip kontrol edecegimiz tipte olanlari topluyoruz
+
+            /*var entities = invocation.Arguments.Where(t => t.GetType().ToString().Contains(entityType.Name.ToString()));*/
+
             var entities = invocation.Arguments.Where(t => t.GetType() == entityType);
 
             //konrol edilecek tipte olanlarin herbiri icin validate methodunu cagiriyoruz ve arg olarak yukarida olusturdugumuz validator instancini ve gelen veriyi veriyoruz

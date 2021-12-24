@@ -80,7 +80,7 @@ namespace HelenSposa.WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var result = _expenseManager.Delete(new ExpenseDeleteDto { Id = id });
+            var result = _expenseManager.Delete(id);
 
             if (!result.Success)
             {

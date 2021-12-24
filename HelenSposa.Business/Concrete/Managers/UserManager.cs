@@ -1,5 +1,7 @@
 ﻿using HelenSposa.Business.Abstract;
+using HelenSposa.Business.Aspects.Autofac;
 using HelenSposa.Business.Constant;
+using HelenSposa.Core.Aspects.Autofac;
 using HelenSposa.Core.Entities.Concrete;
 using HelenSposa.Core.Utilities.Result;
 using HelenSposa.DataAccess.Abstract;
@@ -27,12 +29,22 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessResult();
         }
 
+        [SecuredOperation(roles:"admin")]
+        [CacheRemoveAscpect("IUserService.Get")]
+        public IResult Delete(int id)
+        {
+            _userDal.Delete(new User { Id=id});
+            return new SuccessResult();
+        }
+
+        [CacheAspect(duration: 5)]
         public User GetByMail(string eMail)
         {
             var user=_userDal.Get(u => u.Email == eMail);
             return user;
         }
 
+        [CacheAspect(duration: 5)]
         public IDataResult<List<OperationClaimShowDto>> GetClaims(User user)
         {
             var claims = _userDal.GetClaims(user);

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using HelenSposa.Business.Abstract;
 using HelenSposa.Business.Constant;
+using HelenSposa.Business.ValidationRules.FluentValidation;
+using HelenSposa.Core.Aspects.Autofac;
 using HelenSposa.Core.Entities.Concrete;
 using HelenSposa.Core.Utilities.Result;
 using HelenSposa.Core.Utilities.Security;
@@ -35,6 +37,8 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
 
+
+        [ValidationAspect(typeof(UserLoginValidator))]
         public IDataResult<User> Login(UserLoginDto userLoginDto)
         {
             var userToCheck=_userManager.GetByMail(userLoginDto.Email);
@@ -51,6 +55,7 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
 
+        [ValidationAspect(typeof(UserRegisterValidator))]
         public IDataResult<User> Register(UserRegisterDto userRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
@@ -67,6 +72,7 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<User>(newUser, Messages.UserRegistered);
         }
 
+        [CacheAspect(duration: 5)]
         public IResult UserNotExists(string email)
         {
             if (_userManager.GetByMail(email)!=null)

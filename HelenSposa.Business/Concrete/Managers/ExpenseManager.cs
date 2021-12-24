@@ -34,10 +34,9 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessResult(Messages.ExpenseAdded);
         }
 
-        public IResult Delete(ExpenseDeleteDto deletedExpense)
+        public IResult Delete(int id)
         {
-            var mapExpense = _mapper.Map<Expense>(deletedExpense);
-            _expenseDal.Delete(mapExpense);
+            _expenseDal.Delete(new Expense { Id=id});
             return new SuccessResult(Messages.ExpenseDeleted);
         }
 

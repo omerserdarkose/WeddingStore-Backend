@@ -30,5 +30,6 @@ namespace HelenSposa.Business.Constant
         public static string UserRegistered = "Kullanici basariyla kaydedildi";
         public static string AccessTokenCreated = "Access Token olusturuldu";
         public static string AuthorizationDenied = "Islem icin yetkiniz bulunmamaktadir. Lutfen yoneticinize basvurunuz";
+
     }
 }
