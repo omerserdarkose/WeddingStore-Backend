@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HelenSposa.Business.Abstract;
 using HelenSposa.Business.Constant;
+using HelenSposa.Core.Aspects.Autofac;
 using HelenSposa.Core.Utilities.Result;
 using HelenSposa.DataAccess.Abstract;
 using HelenSposa.Entities.Concrete;
@@ -24,6 +25,7 @@ namespace HelenSposa.Business.Concrete.Managers
             _mapper = mapper;
         }
 
+        [CacheRemoveAscpect("IExpenseService.Get")]
         public IResult Add(ExpenseAddDto addedExpense)
         {
             var mapExpense = _mapper.Map<Expense>(addedExpense);
@@ -38,6 +40,7 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessResult(Messages.ExpenseDeleted);
         }
 
+        [CacheAspect(duration:1)]
         public IDataResult<List<ExpenseShowDto>> GetAll()
         {
             var expenseList = _expenseDal.GetList();
@@ -45,6 +48,7 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<List<ExpenseShowDto>>(mapExpenseList);
         }
 
+        [CacheAspect(duration: 1)]
         public IDataResult<ExpenseShowDto> GetById(int id)
         {
             var expense = _expenseDal.Get(e => e.Id == id);

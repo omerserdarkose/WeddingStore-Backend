@@ -22,6 +22,9 @@ using HelenSposa.Business.Mapping.AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using HelenSposa.Core.Utilities.Security;
 using HelenSposa.Core.Utilities.Security.Encyption;
+using HelenSposa.Core.Extensions;
+using HelenSposa.Core.Utilities.IoC;
+using HelenSposa.Core.DependecyResolver;
 
 namespace HelenSposa.WebApi
 {
@@ -40,6 +43,7 @@ namespace HelenSposa.WebApi
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddControllers();
+            services.AddDependencyResolvers(new ICoreModule[] { new CoreModule()});
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddCors(option =>
             {

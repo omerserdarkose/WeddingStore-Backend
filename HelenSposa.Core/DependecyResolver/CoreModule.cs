@@ -1,4 +1,6 @@
-﻿using HelenSposa.Core.Utilities.IoC;
+﻿using HelenSposa.Core.CrossCuttingConcerns.Caching;
+using HelenSposa.Core.CrossCuttingConcerns.Caching.Microsoft;
+using HelenSposa.Core.Utilities.IoC;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace HelenSposa.Core.DependecyResolver
         public void Load(IServiceCollection services)
         {
             services.AddMemoryCache();
+            services.AddSingleton<ICacheManager, MemoryCacheManager>();
         }
     }
 }
