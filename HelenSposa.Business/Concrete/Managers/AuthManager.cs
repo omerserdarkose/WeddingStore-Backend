@@ -16,20 +16,20 @@ namespace HelenSposa.Business.Concrete.Managers
 {
     public class AuthManager : IAuthService
     {
-        private IUserService _userService;
+        private IUserService _userManager;
         private ITokenHelper _tokenHelper;
         private IMapper _mapper;
 
         public AuthManager(IUserService userService, ITokenHelper tokenHelper, IMapper mapper)
         {
-            _userService = userService;
+            _userManager = userService;
             _tokenHelper = tokenHelper;
             _mapper = mapper;
         }
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            var claims = _userService.GetClaims(user);
+            var claims = _userManager.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, _mapper.Map<List<OperationClaim>>(claims.Data));
 
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
@@ -37,7 +37,7 @@ namespace HelenSposa.Business.Concrete.Managers
 
         public IDataResult<User> Login(UserLoginDto userLoginDto)
         {
-            var userToCheck=_userService.GetByMail(userLoginDto.Email);
+            var userToCheck=_userManager.GetByMail(userLoginDto.Email);
             if (userToCheck==null)
             {
                 return new ErrorDataResult<User>(Messages.UserNotFound);
@@ -62,14 +62,14 @@ namespace HelenSposa.Business.Concrete.Managers
             newUser.PasswordSalt = passwordSalt;
             newUser.IsActive = true;
 
-            _userService.Add(newUser);
+            _userManager.Add(newUser);
 
             return new SuccessDataResult<User>(newUser, Messages.UserRegistered);
         }
 
         public IResult UserNotExists(string email)
         {
-            if (_userService.GetByMail(email)!=null)
+            if (_userManager.GetByMail(email)!=null)
             {
                 return new ErrorResult(Messages.UserAlreadyExist);
             }

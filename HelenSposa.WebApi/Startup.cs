@@ -43,8 +43,8 @@ namespace HelenSposa.WebApi
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddControllers();
-            services.AddDependencyResolvers(new ICoreModule[] { new CoreModule()});
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddDependencyResolvers(new ICoreModule[] { new CoreModule()});
             services.AddCors(option =>
             {
                 option.AddPolicy("AllowOrigin", builder => builder.WithOrigins("http://localhost:44323"));
