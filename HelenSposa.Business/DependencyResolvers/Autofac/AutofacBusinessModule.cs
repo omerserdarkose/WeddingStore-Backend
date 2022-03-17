@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.DataAccess.Context;
 
 namespace HelenSposa.Business.DependencyResolvers.Autofac
 {
@@ -28,9 +29,6 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<ExpenseTypeManager>().As<IExpenseTypeService>();
             builder.RegisterType<EfExpenseTypeDal>().As<IExpenseTypeDal>();
-
-            builder.RegisterType<ExpenseManager>().As<IExpenseService>();
-            builder.RegisterType<EfExpenseDal>().As<IExpenseDal>();
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();

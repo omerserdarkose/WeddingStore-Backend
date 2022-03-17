@@ -1,21 +1,19 @@
-﻿using HelenSposa.Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using HelenSposa.Core.Entities;
 
 #nullable disable
 
 namespace HelenSposa.Entities.Concrete
 {
-    public partial class EventType : IEntity
+    public class EventType : IEntity
     {
-        public EventType()
-        {
-            Events = new HashSet<Event>();
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public virtual ICollection<Event> Events { get; set; }
+        public bool IsActive { get; set; }
+        public int IuserId { get; set; }
+        public DateTime Idate { get; set; }
+        public int? UuserdId { get; set; }
+        public DateTime? Udate { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace HelenSposa.Core.Utilities.Security
 {
     public interface ITokenHelper
     {
-        AccessToken CreateToken(User user,List<OperationClaim> operationClaims);
+        AccessToken CreateToken(User user,List<Claim> operationClaims);
     }
 }

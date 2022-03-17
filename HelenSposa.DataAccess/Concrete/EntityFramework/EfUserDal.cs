@@ -10,20 +10,21 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.DataAccess.Context;
 
 namespace HelenSposa.DataAccess.Concrete.EntityFramework
 {
     public class EfUserDal : EfEntityRepositoryBase<User, HelenSposaDbContext>, IUserDal
     {
-        public List<OperationClaimShowDto> GetClaims(User user)
+        public List<ClaimShowDto> GetClaims(User user)
         {
             using (var context = new HelenSposaDbContext())
             {
-                var result = from uoc in context.UserOperationClaims
-                             join oc in context.OperationClaims
-                             on uoc.OperationClaimId equals oc.Id
+                var result = from uoc in context.UserClaims
+                             join oc in context.Claims
+                             on uoc.ClaimId equals oc.Id
                              where uoc.UserId==user.Id
-                             select new OperationClaimShowDto
+                             select new ClaimShowDto
                              { 
                                  Id=oc.Id,
                                  ClaimName=oc.Name

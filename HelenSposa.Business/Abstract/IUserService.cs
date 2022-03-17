@@ -11,7 +11,7 @@ namespace HelenSposa.Business.Abstract
 {
     public interface IUserService
     {
-        IDataResult<List<OperationClaimShowDto>> GetClaims(User user);
+        IDataResult<List<ClaimShowDto>> GetClaims(User user);
 
         //IDataResult<List<UserShowDto>> GetAll();
 

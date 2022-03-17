@@ -13,6 +13,6 @@ namespace HelenSposa.DataAccess.Abstract
 {
     public interface IUserDal: IEntityRepository<User>
     {
-        List<OperationClaimShowDto> GetClaims(User user);
+        List<ClaimShowDto> GetClaims(User user);
     }
 }

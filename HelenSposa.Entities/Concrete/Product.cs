@@ -1,21 +1,18 @@
-﻿using HelenSposa.Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using HelenSposa.Core.Entities;
 
 #nullable disable
 
 namespace HelenSposa.Entities.Concrete
 {
-    public partial class Product : IEntity
+    public class Product : IEntity
     {
-        public Product()
-        {
-            BasketDetails = new HashSet<BasketDetail>();
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public virtual ICollection<BasketDetail> BasketDetails { get; set; }
+        public int IuserId { get; set; }
+        public DateTime Idate { get; set; }
+        public int? UuserId { get; set; }
+        public DateTime? Udate { get; set; }
     }
 }

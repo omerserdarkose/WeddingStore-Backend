@@ -14,6 +14,6 @@ namespace HelenSposa.Business.Abstract
         IDataResult<List<ExpenseTypeShowDto>> GetAll();
         IResult Add(ExpenseTypeAddDto addedExpenseType);
         IResult Delete(int id);
-        IResult Update(ExpenseTypeUpdateDto updatedExpenseType);
+        IResult Update(int id, ExpenseTypeUpdateDto updatedExpenseType);
     }
 }

@@ -1,12 +1,12 @@
-﻿using HelenSposa.Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using HelenSposa.Core.Entities;
 
 #nullable disable
 
 namespace HelenSposa.Entities.Concrete
 {
-    public partial class BasketDetail : IEntity
+    public class BasketDetail : IEntity
     {
         public int Id { get; set; }
         public int BasketId { get; set; }
@@ -14,8 +14,10 @@ namespace HelenSposa.Entities.Concrete
         public short Quantity { get; set; }
         public decimal Price { get; set; }
         public bool? SaleType { get; set; }
+        public int IuserId { get; set; }
+        public DateTime Idate { get; set; }
+        public int? UuserId { get; set; }
+        public DateTime? Udate { get; set; }
 
-        public virtual Basket Basket { get; set; }
-        public virtual Product Product { get; set; }
     }
 }

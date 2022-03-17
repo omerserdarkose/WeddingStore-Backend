@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Entities.Dtos.OperationClaim
 {
-    public class OperationClaimShowDto:IDto
+    public class ClaimShowDto:IDto
     {
         public int Id { get; set; }
 

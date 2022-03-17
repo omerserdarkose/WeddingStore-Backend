@@ -45,10 +45,10 @@ namespace HelenSposa.Business.Concrete.Managers
         }
 
         [CacheAspect(duration: 5)]
-        public IDataResult<List<OperationClaimShowDto>> GetClaims(User user)
+        public IDataResult<List<ClaimShowDto>> GetClaims(User user)
         {
             var claims = _userDal.GetClaims(user);
-            return new SuccessDataResult<List<OperationClaimShowDto>>(claims);
+            return new SuccessDataResult<List<ClaimShowDto>>(claims);
         }
     }
 }

@@ -9,6 +9,13 @@ namespace HelenSposa.Core.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {
+        public static int GetLoggedUserId(this ClaimsPrincipal principal)
+        {
+            var currentUserId = Convert.ToInt32(principal.Claims
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+
+            return currentUserId;
+        }
         public static List<string> Claims (this ClaimsPrincipal claimsPrincipal,string claimType)
         {
             var result = claimsPrincipal?.FindAll(claimType)?.Select(x => x.Value).ToList();

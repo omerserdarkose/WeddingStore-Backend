@@ -32,13 +32,13 @@ namespace HelenSposa.Business.Concrete.Managers
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claims = _userManager.GetClaims(user);
-            var accessToken = _tokenHelper.CreateToken(user, _mapper.Map<List<OperationClaim>>(claims.Data));
+            var accessToken = _tokenHelper.CreateToken(user, _mapper.Map<List<Claim>>(claims.Data));
 
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
 
 
-        [ValidationAspect(typeof(UserLoginValidator))]
+        //[ValidationAspect(typeof(UserLoginValidator))]
         public IDataResult<User> Login(UserLoginDto userLoginDto)
         {
             var userToCheck=_userManager.GetByMail(userLoginDto.Email);
@@ -55,7 +55,7 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
 
-        [ValidationAspect(typeof(UserRegisterValidator))]
+        //[ValidationAspect(typeof(UserRegisterValidator))]
         public IDataResult<User> Register(UserRegisterDto userRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
@@ -66,6 +66,7 @@ namespace HelenSposa.Business.Concrete.Managers
             newUser.PasswordHash = passwordHash;
             newUser.PasswordSalt = passwordSalt;
             newUser.IsActive = true;
+            newUser.Idate=DateTime.Now;
 
             _userManager.Add(newUser);
 

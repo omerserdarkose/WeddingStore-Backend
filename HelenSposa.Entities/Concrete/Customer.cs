@@ -1,28 +1,23 @@
-﻿using HelenSposa.Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using HelenSposa.Core.Entities;
 
 #nullable disable
 
 namespace HelenSposa.Entities.Concrete
 {
-    public partial class Customer : IEntity, IInfo
+    public class Customer : IEntity
     {
-        public Customer()
-        {
-            Baskets = new HashSet<Basket>();
-            Events = new HashSet<Event>();
-        }
-
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneCode { get; set; }
         public string PhoneNumber { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
-
-        public virtual ICollection<Basket> Baskets { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
+        public bool? IsActive { get; set; }
+        public int IuserId { get; set; }
+        public DateTime Idate { get; set; }
+        public string IdentityNumber { get; set; }
+        public int? UuserId { get; set; }
+        public DateTime? Udate { get; set; }
     }
 }

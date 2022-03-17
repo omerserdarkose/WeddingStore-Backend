@@ -48,10 +48,10 @@ namespace HelenSposa.WebApi.Controllers
         }
 
         // PUT api/<ExpenseTypesController>/5
-        [HttpPut("update")]
-        public IActionResult UpdateExpenseType([FromBody] ExpenseTypeUpdateDto updExpenseType)
+        [HttpPut("{id}")]
+        public IActionResult UpdateExpenseType([FromBody] ExpenseTypeUpdateDto updExpenseType, int id)
         {
-            var result = _expenseTypeManager.Update(updExpenseType);
+            var result = _expenseTypeManager.Update(id,updExpenseType);
 
             if (!result.Success)
             {

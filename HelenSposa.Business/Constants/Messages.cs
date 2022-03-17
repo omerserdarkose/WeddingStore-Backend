@@ -18,10 +18,12 @@ namespace HelenSposa.Business.Constant
         public static string ExpenseTypeAdded = "Gider türü başarıyla eklendi";
         public static string ExpenseTypeDeleted = "Gider türü başarıyla silindi";
         public static string ExpenseTypeUpdated = "Gider türü başarıyla güncellendi";
+        public static string ExpenseTypeNotFound = "Gider türü bulunamadı";
 
         public static string ExpenseAdded = "Gider başarıyla eklendi";
         public static string ExpenseDeleted = "Gider başarıyla silindi";
         public static string ExpenseUpdated = "Gider başarıyla güncellendi";
+
 
         public static string UserNotFound = "Bu email ile kayitli kullanici bulunmamaktadir!";
         public static string PasswordNotMatch = "Girilen parola hatali";
@@ -30,6 +32,6 @@ namespace HelenSposa.Business.Constant
         public static string UserRegistered = "Kullanici basariyla kaydedildi";
         public static string AccessTokenCreated = "Access Token olusturuldu";
         public static string AuthorizationDenied = "Islem icin yetkiniz bulunmamaktadir. Lutfen yoneticinize basvurunuz";
-
+        
     }
 }

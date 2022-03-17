@@ -4,15 +4,12 @@ using HelenSposa.Core.Entities;
 
 #nullable disable
 
-namespace HelenSposa.Entities.Concrete
+namespace HelenSposa.Core.Entities.Concrete
 {
-    public class Income : IEntity
+    public class Claim : IEntity
     {
         public int Id { get; set; }
-        public int BasketId { get; set; }
-        public decimal Amount { get; set; }
-        public DateTime Date { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
         public int IuserId { get; set; }
         public DateTime Idate { get; set; }
         public int? UuserId { get; set; }

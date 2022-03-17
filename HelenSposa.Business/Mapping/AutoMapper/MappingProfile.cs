@@ -2,7 +2,6 @@
 using HelenSposa.Core.Entities.Concrete;
 using HelenSposa.Entities.Concrete;
 using HelenSposa.Entities.Dtos.Customer;
-using HelenSposa.Entities.Dtos.Expense;
 using HelenSposa.Entities.Dtos.ExpenseType;
 using HelenSposa.Entities.Dtos.OperationClaim;
 using HelenSposa.Entities.Dtos.User;
@@ -39,17 +38,9 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             CreateMap<ExpenseTypeUpdateDto, ExpenseType>();
             CreateMap<ExpenseType, ExpenseTypeUpdateDto>();
 
-            CreateMap<ExpenseAddDto, Expense>();
-            CreateMap<Expense, ExpenseAddDto>();
-            
-            CreateMap<ExpenseUpdateDto, Expense>();
-            CreateMap<Expense, ExpenseUpdateDto>();
-
-            CreateMap<Expense, ExpenseShowDto>().ForMember(dest=>dest.ExpenseType,opt=>opt.MapFrom(src=>src.Type.Name));
-
             CreateMap<UserRegisterDto, User>();
 
-            CreateMap<OperationClaimShowDto, OperationClaim>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ClaimName));
+            CreateMap<ClaimShowDto, Claim>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ClaimName));
 
 
         }
