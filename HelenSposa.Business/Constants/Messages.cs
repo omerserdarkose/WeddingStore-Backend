@@ -29,7 +29,7 @@ namespace HelenSposa.Business.Constant
         public static string PasswordNotMatch = "Girilen parola hatali";
         public static string SuccessfulLogin = "Kullanici girisi basarili";
         public static string UserAlreadyExist = "Bu mail ile kayitli bir kullanici zaten mevcut";
-        public static string UserRegistered = "Kullanici basariyla kaydedildi";
+        public static string UserAdded = "Kullanici basariyla kaydedildi";
         public static string AccessTokenCreated = "Access Token olusturuldu";
         public static string AuthorizationDenied = "Islem icin yetkiniz bulunmamaktadir. Lutfen yoneticinize basvurunuz";
         

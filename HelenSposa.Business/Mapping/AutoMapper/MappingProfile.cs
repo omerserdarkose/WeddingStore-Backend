@@ -38,7 +38,7 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             CreateMap<ExpenseTypeUpdateDto, ExpenseType>();
             CreateMap<ExpenseType, ExpenseTypeUpdateDto>();
 
-            CreateMap<UserRegisterDto, User>();
+            CreateMap<UserAddDto, User>();
 
             CreateMap<ClaimShowDto, Claim>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ClaimName));
 

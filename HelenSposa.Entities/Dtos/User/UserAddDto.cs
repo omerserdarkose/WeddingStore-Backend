@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Entities.Dtos.User
 {
-    public class UserRegisterDto:IDto
+    public class UserAddDto:IDto
     {
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public string Password { get; set; }
-
+        
         public string Email { get; set; }
     }
 }
