@@ -43,6 +43,12 @@ namespace HelenSposa.Business.Concrete.Managers
             var userList = _userDal.GetList();
 
             var mapUserList = _mapper.Map<List<UserShowDto>>(userList);
+
+            foreach (UserShowDto user in mapUserList)
+            {
+                user.Claims = GetUserClaims(user.Id).Data;
+            }
+
             return new SuccessDataResult<List<UserShowDto>>(mapUserList);
         }
 

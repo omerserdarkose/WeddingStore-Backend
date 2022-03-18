@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.Entities.Dtos.Claim;
 
 namespace HelenSposa.Entities.Dtos.User
 {
@@ -14,6 +15,6 @@ namespace HelenSposa.Entities.Dtos.User
         public string LastName { get; set; }
         public string Email { get; set; }
         public bool IsActive { get; set; }
-        public List<string> Claims { get; set; }
+        public List<ClaimShowDto> Claims { get; set; }
     }
 }

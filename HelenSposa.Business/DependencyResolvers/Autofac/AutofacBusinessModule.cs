@@ -33,9 +33,12 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
 
+            builder.RegisterType<UserClaimManager>().As<IUserClaimService>();
+            builder.RegisterType<EfUserClaimDal>().As<IUserClaimDal>();
+
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
             builder.RegisterType<AuthManager>().As<IAuthService>();
-            
+
 
             //yurutulmekte olan assemblyi aliyoruz
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
