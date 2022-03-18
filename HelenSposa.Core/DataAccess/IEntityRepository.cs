@@ -28,5 +28,7 @@ namespace HelenSposa.Core.DataAccess
 
         void Delete(T entity);
 
+        bool Any(Expression<Func<T, bool>> filter);
+
     }
 }
