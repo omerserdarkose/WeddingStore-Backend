@@ -1,13 +1,10 @@
-## Patika-Gelecek Varlik Full Stack Bootcamp Projesi
-	Bootcamp suresince alinan egitimlerin uygulanmasi kapsaminda gelistirilen proje.
+###Gelinlik Magazasindaki Satis, Randevu ve Gelir-Gider kayitlarinin kontrolu maksadiyla gelistiriliyor
 
-### Amac
-- Backend kisminda '.Net Core', Frontend kisminda 'React' kullanilarak kurumsal mimari ve best-practise orneklerini iceren islevsel bir proje olusturmak
 
-### Gelistirme Sureci
-- Bootcamp suresinde ogrenilen her yeni yontem ve teknoloji sonrasinda ilaveler ve refactoring islemleri ile surekli olarak gelisim
 
-### Kazanimlar
+
+- **HttpContextAccessor** kullanimi
+- Password Creator kullanimi
 - **Interceptor** kullanimi
 - **Cross Cutting Concern** ve **Aspect Oriented Programming**
 - **JWT** kutuphanesine ait kullanim ornekleri
