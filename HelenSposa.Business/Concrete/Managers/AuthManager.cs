@@ -44,7 +44,12 @@ namespace HelenSposa.Business.Concrete.Managers
             var userToCheck=_userManager.GetByMail(userLoginDto.Email);
             if (userToCheck==null)
             {
-                return new ErrorDataResult<User>(Messages.UserNotFound);
+                return new ErrorDataResult<User>(Messages.UserNotFoundByMail);
+            }
+
+            if (userToCheck.IsActive == false)
+            {
+                return new ErrorDataResult<User>(Messages.UserDenied);
             }
 
             if (!HashingHelper.VerifyPasswordHash(userLoginDto.Password,userToCheck.PasswordHash,userToCheck.PasswordSalt))

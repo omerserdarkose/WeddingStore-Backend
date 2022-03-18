@@ -25,13 +25,20 @@ namespace HelenSposa.Business.Constant
         public static string ExpenseUpdated = "Gider başarıyla güncellendi";
 
 
-        public static string UserNotFound = "Bu email ile kayitli kullanici bulunmamaktadir!";
+        public static string UserNotFoundByMail = "Bu email ile kayitli kullanici bulunmamaktadir!";
+        public static string UserNotFoundById = "Bu id ile kayitli kullanici bulunmamaktadir!";
         public static string PasswordNotMatch = "Girilen parola hatali";
         public static string SuccessfulLogin = "Kullanici girisi basarili";
         public static string UserAlreadyExist = "Bu mail ile kayitli bir kullanici zaten mevcut";
         public static string UserAdded = "Kullanici basariyla kaydedildi";
         public static string AccessTokenCreated = "Access Token olusturuldu";
         public static string AuthorizationDenied = "Islem icin yetkiniz bulunmamaktadir. Lutfen yoneticinize basvurunuz";
-        
+        public static string UserClaimAdded = "Kullanici yetkisi eklendi";
+        public static string UserUpdated = "Kullanici bilgileri guncellendi";
+        public static string UserClaimDeleted = "Kullanici yetkisi kaldirildi";
+        public static string UserClaimNotFound = "Belirtilen yetki kullanicida bulunmamaktadir";
+        public static string UserClaimAlreadyExists = "Beirtilen yetki zaten mevcut";
+        public static string UserRemoved = "Kullanicinin sitem girisi engellendi";
+        public static string UserDenied = "Girisiniz engellendi. Lutfen yoneticinize danisiniz";
     }
 }

@@ -11,5 +11,9 @@ namespace HelenSposa.Business.Abstract
     public interface IUserClaimService
     {
         List<ClaimShowDto>  GetClaimsById(int id);
+
+        IResult Add(int id, int claimId);
+
+        IResult Delete(int id, int claimId);
     }
 }

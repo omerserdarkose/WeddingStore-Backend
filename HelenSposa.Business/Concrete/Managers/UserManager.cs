@@ -52,6 +52,22 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessDataResult<List<UserShowDto>>(mapUserList);
         }
 
+        public IDataResult<UserShowDto> GetById(int id)
+        {
+            var user = _userDal.Get(x => x.Id == id);
+
+            if (user is null)
+            {
+                return new ErrorDataResult<UserShowDto>(Messages.UserNotFoundById);
+            }
+
+            var mapUser = _mapper.Map<UserShowDto>(user);
+
+            mapUser.Claims = GetUserClaims(user.Id).Data;
+
+            return new SuccessDataResult<UserShowDto>(mapUser);
+        }
+
         public IResult Add(UserAddDto userAddDto)
         {
 
@@ -76,21 +92,75 @@ namespace HelenSposa.Business.Concrete.Managers
         //[CacheRemoveAscpect("IUserService.Get")]
         public IResult Delete(int id)
         {
-            _userDal.Delete(new User { Id=id});
-            return new SuccessResult();
+            var user = _userDal.Get(x => x.Id == id);
+
+            if (user is null)
+            {
+                return new ErrorResult(Messages.UserNotFoundById);
+            }
+
+            user.IsActive = false;
+            user.UuserId = _httpContextAccessor.HttpContext.User.GetLoggedUserId();
+            user.Udate=DateTime.Now;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Messages.UserRemoved);
+        }
+
+        public IResult Update(int id, UserUpdateDto userUpdateDto)
+        {
+            var user = _userDal.Get(x => x.Id == id);
+
+            if (user is null)
+            {
+                return new ErrorResult(Messages.UserNotFoundById);
+            }
+
+            user = _mapper.Map(userUpdateDto, user);
+            user.UuserId = _httpContextAccessor.HttpContext.User.GetLoggedUserId();
+            user.Udate = DateTime.Now;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Messages.UserUpdated);
+        }
+
+        public IResult AddUserClaim(int id, int claimId)
+        {
+            var result=_userClaimManager.Add(id, claimId);
+
+            if (!result.Success)
+            {
+                return new ErrorResult(result.Message);
+            }
+
+            return new SuccessResult(result.Message);
+        }
+
+        public IResult DeleteUserClaim(int id, int claimId)
+        {
+            var result = _userClaimManager.Delete(id, claimId);
+
+            if (!result.Success)
+            {
+                return new ErrorResult(result.Message);
+            }
+
+            return new SuccessResult(result.Message);
         }
 
         //[CacheAspect(duration: 5)]
         public User GetByMail(string eMail)
         {
-            var user=_userDal.Get(u => u.Email == eMail);
+            var user = _userDal.Get(u => u.Email == eMail);
             return user;
         }
 
         //[CacheAspect(duration: 5)]
         public IDataResult<List<ClaimShowDto>> GetUserClaims(int id)
         {
-            var claims =_userClaimManager.GetClaimsById(id);
+            var claims = _userClaimManager.GetClaimsById(id);
             return new SuccessDataResult<List<ClaimShowDto>>(claims);
         }
 
