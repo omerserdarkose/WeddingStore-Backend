@@ -40,5 +40,9 @@ namespace HelenSposa.Business.Constant
         public static string UserClaimAlreadyExists = "Beirtilen yetki zaten mevcut";
         public static string UserRemoved = "Kullanicinin sitem girisi engellendi";
         public static string UserDenied = "Girisiniz engellendi. Lutfen yoneticinize danisiniz";
+        public static string ClaimNotFoundById="Belirtilen id ye kayitli yetki bulunmamaktadir";
+        public static string ClaimAlreadyExists="Islem yapilmaya calisilan yetki zaten yetkiler listesinde mevcut";
+        public static string ClaimAdded="Yeni yetki listeye eklendi";
+        public static string ClaimRemoved = "Yetki listeden kaldirildi";
     }
 }
