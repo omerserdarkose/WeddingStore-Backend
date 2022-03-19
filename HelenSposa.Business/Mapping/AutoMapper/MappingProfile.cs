@@ -46,6 +46,8 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             
             CreateMap<ClaimShowDto, Claim>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ClaimName)).ReverseMap();
 
+            CreateMap<ClaimUpdateDto, Claim>().ReverseMap();
+
 
         }
     }
