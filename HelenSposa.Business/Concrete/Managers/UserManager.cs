@@ -172,6 +172,29 @@ namespace HelenSposa.Business.Concrete.Managers
             return new SuccessResult(result.Message);
         }
 
+        public IResult PasswordReset(string mail)
+        {
+            var user = GetByMail(mail);
+
+            if (user is null)
+            {
+                return new ErrorResult(Messages.UserNotFoundByMail);
+            }
+
+            var newPassword = PasswordHelper.CreatePassword();
+
+            HashingHelper.CreatePasswordHash(newPassword, out var passwordHash, out var passwordSalt);
+
+            user.PasswordSalt = passwordSalt;
+            user.PasswordHash = passwordHash;
+            user.UuserId = _httpContextAccessor.HttpContext.User.GetLoggedUserId()==0?user.Id: _httpContextAccessor.HttpContext.User.GetLoggedUserId();
+            user.Udate=DateTime.Now;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Messages.UserPasswordReseted);
+        }
+
         //[CacheAspect(duration: 5)]
         public User GetByMail(string eMail)
         {

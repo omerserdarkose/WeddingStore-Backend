@@ -69,7 +69,20 @@ namespace HelenSposa.WebApi.Controllers
 
             return Ok(result.Message);
         }
-        
+
+        [HttpPost("pw-reset")]
+        public IActionResult PasswordReset([FromBody] UserEmailDto userEmailDto)
+        {
+            var result = _userManager.PasswordReset(userEmailDto.Email);
+
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result.Message);
+        }
+
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UserUpdateDto userUpdateDto)

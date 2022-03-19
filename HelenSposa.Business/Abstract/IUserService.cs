@@ -21,6 +21,7 @@ namespace HelenSposa.Business.Abstract
         IResult Update(int id,UserUpdateDto userUpdateDto);
         IResult AddUserClaim(int id, int claimId);
         IResult DeleteUserClaim(int id, int claimId);
+        IResult PasswordReset(string mail);
         IResult UserNotExists(string email);
         //IResult SetClaims (User user, List<OperationClaim> operationClaims);
         //kullaniciya yetki ilaveleri yapan bir method yazilacak, user ile ilgili diger 2 tablo dahil edildikten sonra

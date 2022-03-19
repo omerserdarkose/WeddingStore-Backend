@@ -45,5 +45,6 @@ namespace HelenSposa.Business.Constant
         public static string ClaimAdded="Yeni yetki listeye eklendi";
         public static string ClaimRemoved = "Yetki listeden kaldirildi";
         public static string ClaimUpdated="Yetki guncellendi";
+        public static string UserPasswordReseted="Parola Sifirlandi";
     }
 }
