@@ -36,6 +36,9 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
             builder.RegisterType<UserClaimManager>().As<IUserClaimService>();
             builder.RegisterType<EfUserClaimDal>().As<IUserClaimDal>();
 
+            builder.RegisterType<ClaimManager>().As<IClaimService>();
+            builder.RegisterType<EfClaimDal>().As<IClaimDal>();
+
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
             builder.RegisterType<AuthManager>().As<IAuthService>();
 

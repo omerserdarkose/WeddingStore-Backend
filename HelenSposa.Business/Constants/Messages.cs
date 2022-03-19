@@ -44,5 +44,6 @@ namespace HelenSposa.Business.Constant
         public static string ClaimAlreadyExists="Islem yapilmaya calisilan yetki zaten yetkiler listesinde mevcut";
         public static string ClaimAdded="Yeni yetki listeye eklendi";
         public static string ClaimRemoved = "Yetki listeden kaldirildi";
+        public static string ClaimUpdated="Yetki guncellendi";
     }
 }

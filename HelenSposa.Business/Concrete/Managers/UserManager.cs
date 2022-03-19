@@ -28,13 +28,15 @@ namespace HelenSposa.Business.Concrete.Managers
         private IMapper _mapper;
         private IHttpContextAccessor _httpContextAccessor;
         private IUserClaimService _userClaimManager;
+        private IClaimService _claimManager;
 
-        public UserManager(IUserDal userDal, IMapper mapper, IHttpContextAccessor httpContextAccessor, IUserClaimService userClaimManager)
+        public UserManager(IUserDal userDal, IMapper mapper, IHttpContextAccessor httpContextAccessor, IUserClaimService userClaimManager, IClaimService claimManager)
         {
             _userDal = userDal;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
             _userClaimManager = userClaimManager;
+            _claimManager = claimManager;
         }
 
         //[ValidationAspect(typeof(UserAddValidator))]
@@ -128,6 +130,16 @@ namespace HelenSposa.Business.Concrete.Managers
 
         public IResult AddUserClaim(int id, int claimId)
         {
+            if (!_userDal.Any(x => x.Id == id))
+            {
+                return new ErrorResult(Messages.UserNotFoundById);
+            }
+
+            if (!_claimManager.CheckClaimById(claimId))
+            {
+                return new ErrorResult(Messages.ClaimNotFoundById);
+            }
+
             var result=_userClaimManager.Add(id, claimId);
 
             if (!result.Success)
@@ -140,6 +152,16 @@ namespace HelenSposa.Business.Concrete.Managers
 
         public IResult DeleteUserClaim(int id, int claimId)
         {
+            if (!_userDal.Any(x => x.Id == id))
+            {
+                return new ErrorResult(Messages.UserNotFoundById);
+            }
+
+            if (!_claimManager.CheckClaimById(claimId))
+            {
+                return new ErrorResult(Messages.ClaimNotFoundById);
+            }
+
             var result = _userClaimManager.Delete(id, claimId);
 
             if (!result.Success)

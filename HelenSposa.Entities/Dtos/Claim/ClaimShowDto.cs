@@ -10,7 +10,7 @@ namespace HelenSposa.Entities.Dtos.Claim
     public class ClaimShowDto:IDto
     {
         public int Id { get; set; }
-
         public string ClaimName { get; set; }
+        public bool IsActive { get; set; }
     }
 }
