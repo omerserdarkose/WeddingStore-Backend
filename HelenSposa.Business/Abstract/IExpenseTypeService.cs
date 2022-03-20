@@ -15,5 +15,6 @@ namespace HelenSposa.Business.Abstract
         IResult Add(ExpenseTypeAddDto addedExpenseType);
         IResult Delete(int id);
         IResult Update(int id, ExpenseTypeUpdateDto updatedExpenseType);
+        bool IsExists(int id);
     }
 }

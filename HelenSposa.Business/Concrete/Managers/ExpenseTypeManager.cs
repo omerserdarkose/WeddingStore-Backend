@@ -85,5 +85,12 @@ namespace HelenSposa.Business.Concrete.Managers
             _expenseTypeDal.Update(updExpenseType);
             return new SuccessResult(Messages.ExpenseTypeUpdated);
         }
+
+        public bool IsExists(int id)
+        {
+            var result = _expenseTypeDal.Any(x => x.Id == id);
+
+            return result;
+        }
     }
 }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.Entities.Dtos.Expense;
 
 namespace HelenSposa.Business.Mapping.AutoMapper
 {
@@ -35,8 +36,10 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             CreateMap<ExpenseTypeAddDto, ExpenseType>();
             CreateMap<ExpenseType, ExpenseTypeAddDto>();
 
-            CreateMap<ExpenseTypeUpdateDto, ExpenseType>();
-            CreateMap<ExpenseType, ExpenseTypeUpdateDto>();
+            CreateMap<ExpenseTypeUpdateDto, ExpenseType>().ReverseMap();
+
+            CreateMap<ExpenseAddDto, Expense>().ReverseMap();
+            CreateMap<ExpenseShowDto, Expense>().ReverseMap();
 
             CreateMap<UserAddDto, User>();
 

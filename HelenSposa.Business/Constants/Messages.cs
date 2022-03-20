@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.Entities.Dtos.Expense;
 
 namespace HelenSposa.Business.Constant
 {
@@ -46,5 +47,7 @@ namespace HelenSposa.Business.Constant
         public static string ClaimRemoved = "Yetki listeden kaldirildi";
         public static string ClaimUpdated="Yetki guncellendi";
         public static string UserPasswordReseted="Parola Sifirlandi";
+        public static string ExpenseNotExists="Kayitli Gider bulunmamaktadir";
+        public static string ExpenseNotExistsByCategory="Bu kategoride Gider Bulunmamaktadir";
     }
 }
