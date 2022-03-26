@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace HelenSposa.Core.Aspects.Autofac
 {
+
+
     public class CacheAspect:MethodInterception
     {
         int _duration;

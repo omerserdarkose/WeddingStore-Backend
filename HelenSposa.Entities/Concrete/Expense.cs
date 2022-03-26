@@ -13,7 +13,7 @@ namespace HelenSposa.Entities.Concrete
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public int IuserdId { get; set; }
+        public int IuserId { get; set; }
         public DateTime Idate { get; set; }
         public int? UuserId { get; set; }
         public DateTime? Udate { get; set; }

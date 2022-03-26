@@ -13,6 +13,8 @@ namespace HelenSposa.Business.Abstract
     {
         IDataResult<List<ExpenseShowDto>> GetAll(Expression<Func<ExpenseShowDto, bool>> filter = null);
         IDataResult<List<ExpenseShowDto>> GetAllByTypeId(int typeId);
+        IResult Add(ExpenseAddDto expenseAddDto);
+        IResult Update(int id, ExpenseUpdateDto expenseUpdateDto);
     }
 
 }
