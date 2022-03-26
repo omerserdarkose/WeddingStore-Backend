@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.Entities.Dtos.EventType;
 using HelenSposa.Entities.Dtos.Expense;
 
 namespace HelenSposa.Business.Mapping.AutoMapper
@@ -18,34 +19,28 @@ namespace HelenSposa.Business.Mapping.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<CustomerAddDto, Customer>();
-            CreateMap<Customer, CustomerAddDto>();
+            CreateMap<CustomerAddDto, Customer>().ReverseMap();
             
-            CreateMap<CustomerUpdateDto, Customer>();
-            CreateMap<Customer, CustomerUpdateDto>();
+            CreateMap<CustomerUpdateDto, Customer>().ReverseMap();
 
-            CreateMap<CustomerDeleteDto, Customer>();
-            CreateMap<Customer, CustomerDeleteDto>();
+            CreateMap<CustomerDeleteDto, Customer>().ReverseMap();
 
-            CreateMap<CustomerShowDto, Customer>();
-            CreateMap<Customer, CustomerShowDto>();
+            CreateMap<CustomerShowDto, Customer>().ReverseMap();
 
-            CreateMap<ExpenseTypeShowDto, ExpenseType>();
-            CreateMap<ExpenseType, ExpenseTypeShowDto>();
-
-            CreateMap<ExpenseTypeAddDto, ExpenseType>();
-            CreateMap<ExpenseType, ExpenseTypeAddDto>();
-
+            CreateMap<ExpenseTypeShowDto, ExpenseType>().ReverseMap(); 
+            CreateMap<ExpenseTypeAddDto, ExpenseType>().ReverseMap();
             CreateMap<ExpenseTypeUpdateDto, ExpenseType>().ReverseMap();
+
+            CreateMap<EventTypeShowDto, EventType>().ReverseMap();
+            CreateMap<EventTypeAddDto, EventType>().ReverseMap();
+            CreateMap<EventTypeUpdateDto, EventType>().ReverseMap();
 
             CreateMap<ExpenseAddDto, Expense>().ReverseMap();
             CreateMap<ExpenseShowDto, Expense>().ReverseMap();
             CreateMap<ExpenseUpdateDto, Expense>().ReverseMap();
 
             CreateMap<UserAddDto, User>();
-
             CreateMap<UserUpdateDto, User>();
-
             CreateMap<User, UserShowDto>();
             
             CreateMap<ClaimShowDto, Claim>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ClaimName)).ReverseMap();

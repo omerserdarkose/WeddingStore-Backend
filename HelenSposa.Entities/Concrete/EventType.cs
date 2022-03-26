@@ -13,7 +13,7 @@ namespace HelenSposa.Entities.Concrete
         public bool IsActive { get; set; }
         public int IuserId { get; set; }
         public DateTime Idate { get; set; }
-        public int? UuserdId { get; set; }
+        public int? UuserId { get; set; }
         public DateTime? Udate { get; set; }
     }
 }

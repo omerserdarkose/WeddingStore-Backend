@@ -49,5 +49,9 @@ namespace HelenSposa.Business.Constant
         public static string UserPasswordReseted="Parola Sifirlandi";
         public static string ExpenseNotExists="Kayitli Gider bulunmamaktadir";
         public static string ExpenseNotExistsByCategory="Bu kategoride Gider Bulunmamaktadir";
+        public static string EventTypeAdded="Etkinlik türü eklendi";
+        public static string EventTypeNotFound="Etkinlik türü mevcut değil";
+        public static string EventTypeDeleted="Etkinlik türü kaldırıldı";
+        public static string EventTypeUpdated="Etkinlik türü güncellendi";
     }
 }

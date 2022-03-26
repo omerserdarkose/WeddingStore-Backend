@@ -72,7 +72,7 @@ namespace HelenSposa.Business.Concrete.Managers
         //[SecuredOperation("admin")]
         //[ValidationAspect(typeof(ExpenseTypeUpdateValidator))]
         //[CacheRemoveAscpect("IExpenseTypeService.Get")]
-        public IResult Update(int id,ExpenseTypeUpdateDto updatedExpenseType)
+        public IResult Update(int id, ExpenseTypeUpdateDto updatedExpenseType)
         {
             var updExpenseType = _expenseTypeDal.Get(x => x.Id == id);
             if (updExpenseType is null)
