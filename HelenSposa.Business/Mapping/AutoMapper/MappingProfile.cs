@@ -40,6 +40,7 @@ namespace HelenSposa.Business.Mapping.AutoMapper
 
             CreateMap<ExpenseAddDto, Expense>().ReverseMap();
             CreateMap<ExpenseShowDto, Expense>().ReverseMap();
+            CreateMap<ExpenseUpdateDto, Expense>().ReverseMap();
 
             CreateMap<UserAddDto, User>();
 

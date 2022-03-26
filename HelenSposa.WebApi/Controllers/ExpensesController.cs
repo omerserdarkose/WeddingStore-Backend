@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HelenSposa.Business.Abstract;
+using HelenSposa.Entities.Dtos.Expense;
 
 
 namespace HelenSposa.WebApi.Controllers
@@ -11,36 +13,65 @@ namespace HelenSposa.WebApi.Controllers
     [ApiController]
     public class ExpensesController : ControllerBase
     {
-        // GET: api/<ExpensesController>
+        private IExpenseService _expenseManager;
+
+        public ExpensesController(IExpenseService expenseManager)
+        {
+            _expenseManager = expenseManager;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult GetAll()
         {
-            return new string[] { "value1", "value2" };
+            var result = _expenseManager.GetAll();
+
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result);
         }
 
-        // GET api/<ExpensesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+        [HttpGet("categories/{catId}")]
+        public IActionResult GetByCategory(int catId)
         {
-            return "value";
+            var result = _expenseManager.GetAllByTypeId(catId);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result);
         }
 
-        // POST api/<ExpensesController>
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Add([FromBody] ExpenseAddDto expenseAddDto)
         {
+            var result = _expenseManager.Add(expenseAddDto);
+
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result.Message);
         }
 
-        // PUT api/<ExpensesController>/5
+
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Update(int id, [FromBody] ExpenseUpdateDto expenseUpdateDto)
         {
-        }
+            var result = _expenseManager.Update(id, expenseUpdateDto);
 
-        // DELETE api/<ExpensesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result.Message);
         }
     }
 }
