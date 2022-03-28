@@ -53,5 +53,9 @@ namespace HelenSposa.Business.Constant
         public static string EventTypeNotFound="Etkinlik türü mevcut değil";
         public static string EventTypeDeleted="Etkinlik türü kaldırıldı";
         public static string EventTypeUpdated="Etkinlik türü güncellendi";
+        public static string ProductAdded="Ürün eklendi";
+        public static string ProductNotFound = "Ürün mevcut değil";
+        public static string ProductDeleted = "Ürün kaldırıldı";
+        public static string ProductUpdated = "Ürün güncellendi";
     }
 }

@@ -48,6 +48,9 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
             builder.RegisterType<EventTypeManager>().As<IEventTypeService>();
             builder.RegisterType<EfEventTypeDal>().As<IEventTypeDal>();
 
+            builder.RegisterType<ProductManager>().As<IProductService>();
+            builder.RegisterType<EfProductDal>().As<IProductDal>();
+
 
             //yurutulmekte olan assemblyi aliyoruz
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
