@@ -9,9 +9,10 @@ namespace HelenSposa.Entities.Concrete
     public class Event : IEntity
     {
         public int Id { get; set; }
-        public int CustomerId { get; set; }
+        public string Summary { get; set; }
         public int TypeId { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public string Description { get; set; }
         public string No { get; set; }
         public bool IsActive { get; set; }
