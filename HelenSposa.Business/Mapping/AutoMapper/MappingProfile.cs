@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HelenSposa.Entities.Dtos.Event;
 using HelenSposa.Entities.Dtos.EventType;
 using HelenSposa.Entities.Dtos.Expense;
 using HelenSposa.Entities.Dtos.Product;
@@ -39,6 +40,9 @@ namespace HelenSposa.Business.Mapping.AutoMapper
             CreateMap<ExpenseAddDto, Expense>().ReverseMap();
             CreateMap<ExpenseShowDto, Expense>().ReverseMap();
             CreateMap<ExpenseUpdateDto, Expense>().ReverseMap();
+
+            CreateMap<EventAddDto, Event>().ReverseMap();
+            CreateMap<EventUpdateDto, Event>().ReverseMap();
 
             CreateMap<ProductShowDto, Product>().ReverseMap();
             CreateMap<ProductAddDto, Product>().ReverseMap();

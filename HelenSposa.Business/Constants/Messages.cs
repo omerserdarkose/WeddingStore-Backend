@@ -57,5 +57,6 @@ namespace HelenSposa.Business.Constant
         public static string ProductNotFound = "Ürün mevcut değil";
         public static string ProductDeleted = "Ürün kaldırıldı";
         public static string ProductUpdated = "Ürün güncellendi";
+        public static string EventAdded="Etkinlik eklendi";
     }
 }

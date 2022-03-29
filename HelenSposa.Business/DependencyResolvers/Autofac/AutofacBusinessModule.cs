@@ -46,7 +46,10 @@ namespace HelenSposa.Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
 
             builder.RegisterType<EventTypeManager>().As<IEventTypeService>();
-            builder.RegisterType<EfEventTypeDal>().As<IEventTypeDal>();
+            builder.RegisterType<EfEventTypeDal>().As<IEventTypeDal>(); 
+            
+            builder.RegisterType<EventManager>().As<IEventService>();
+            builder.RegisterType<EfEventDal>().As<IEventDal>();
 
             builder.RegisterType<ProductManager>().As<IProductService>();
             builder.RegisterType<EfProductDal>().As<IProductDal>();
